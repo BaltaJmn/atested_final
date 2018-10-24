@@ -45,14 +45,16 @@ public class ResumenActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_listado:
                 Log.i("ActionBar", "Listado de Preguntas");
+                Intent listadoIntent = new Intent(ResumenActivity.this, ListadoActivity.class);
+                startActivity(listadoIntent);
                 return true;
             case R.id.action_configuracion:
                 Log.i("ActionBar", "Configuracion");;
                 return true;
             case R.id.action_acercade:
                 Log.i("ActionBar", "Acerca De");
-                Intent it = new Intent(ResumenActivity.this, AcercaActivity.class);
-                startActivity(it);
+                Intent acercadeIntent = new Intent(ResumenActivity.this, AcercaActivity.class);
+                startActivity(acercadeIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

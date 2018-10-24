@@ -3,5 +3,7 @@
     <string name="action_listado">Listado de Preguntas</string>
     <string name="action_configuracion">Configuracion</string>
     <string name="action_acercade">Acerca de</string>
-    <string name="title_activity_listado">ListadoActivity</string>
+    <string name="listado_provisional">Listado Provisional</string>
+    <string name="title_activity_listado">Listado</string>
+    <string name="title_activity_anyadir">AnyadirActivity</string>
 </resources>

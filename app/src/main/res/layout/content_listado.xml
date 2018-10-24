@@ -8,4 +8,14 @@
     tools:context=".ListadoActivity"
     tools:showIn="@layout/activity_listado">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
+        android:text="Aun no se han implementado los listados de preguntas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
