@@ -1,11 +1,13 @@
 package com.balta.atested;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,29 +37,22 @@ public class AnyadirActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(enunciado.getText().toString().isEmpty()){
-                    Snackbar.make(view, "Rellenar todos los campos", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
+                if( enunciado.getText().toString().isEmpty() ||
+                    resp1.getText().toString().isEmpty() ||
+                    resp2.getText().toString().isEmpty() ||
+                    resp3.getText().toString().isEmpty() ||
+                    resp4.getText().toString().isEmpty() ){
 
-                if(resp1.getText().toString().isEmpty()){
-                    Snackbar.make(view, "Rellenar todos los campos", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
+                    view.clearFocus();
+                    if (view != null) {
+                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                    }
 
-                if(resp2.getText().toString().isEmpty()){
                     Snackbar.make(view, "Rellenar todos los campos", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
-                }
-
-                if(resp3.getText().toString().isEmpty()){
-                    Snackbar.make(view, "Rellenar todos los campos", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-
-                if(resp4.getText().toString().isEmpty()){
-                    Snackbar.make(view, "Rellenar todos los campos", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                } else {
+                    finish();
                 }
 
             }
