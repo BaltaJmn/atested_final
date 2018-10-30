@@ -15,10 +15,6 @@ import android.view.MenuItem;
 
 public class ResumenActivity extends AppCompatActivity {
 
-    final private int CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 123;
-    private Context myContext;
-    private ConstraintLayout constraintLayoutMainActivity;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
