@@ -36,7 +36,7 @@ public class AnyadirActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinnerCategoria);
+        final Spinner spinner = (Spinner) findViewById(R.id.spinnerCategoria);
         String[] letra = {"A", "B", "C", "D", "E"};
         spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, letra));
 
@@ -46,6 +46,7 @@ public class AnyadirActivity extends AppCompatActivity {
         final EditText resp2 = (EditText) findViewById(R.id.editTextIncorrecta1);
         final EditText resp3 = (EditText) findViewById(R.id.editTextIncorrecta2);
         final EditText resp4 = (EditText) findViewById(R.id.editTextIncorrecta3);
+        final Spinner spinner1 = (Spinner) findViewById(R.id.spinnerCategoria);
 
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +77,7 @@ public class AnyadirActivity extends AppCompatActivity {
                         resp1.getText().toString().isEmpty() ||
                         resp2.getText().toString().isEmpty() ||
                         resp3.getText().toString().isEmpty() ||
-                        resp4.getText().toString().isEmpty()) {
+                        resp4.getText().toString().isEmpty() ) {
 
                     view.clearFocus();
                     if (view != null) {
@@ -87,8 +88,13 @@ public class AnyadirActivity extends AppCompatActivity {
                     Snackbar.make(view, "Rellenar todos los campos", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 } else {
+
+                    Pregunta nuevaPregunta = new Pregunta(enunciado.getText().toString(), spinner1.getSelectedItem().toString(), resp1.getText().toString(), resp2.getText().toString(), resp3.getText().toString(), resp4.getText().toString());
+                    Repositorio.insertar(nuevaPregunta, myContext);
                     finish();
                 }
+
+
 
             }
         });

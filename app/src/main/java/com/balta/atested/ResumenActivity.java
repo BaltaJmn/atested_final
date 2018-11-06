@@ -46,7 +46,7 @@ public class ResumenActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.action_listado:
-                Log.i("ActionBar", "Listado de Preguntas");
+                Log.i("ActionBar", "Listado de Pregunta");
                 Intent listadoIntent = new Intent(ResumenActivity.this, ListadoActivity.class);
                 startActivity(listadoIntent);
                 return true;
