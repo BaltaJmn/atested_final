@@ -29,6 +29,14 @@ public class Pregunta {
         this.respuestaIncorrecta3 = respuestaIncorrecta3;
     }
 
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
     public String getEnunciado() {
         return enunciado;
     }
