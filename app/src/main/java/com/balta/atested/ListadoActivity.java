@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -83,29 +84,38 @@ public class ListadoActivity extends AppCompatActivity {
         preguntas.add(new Pregunta(1,"enunciado1","categoria1","rc1","ri11","ri12","ri13"));
         preguntas.add(new Pregunta(2,"enunciado2","categoria2","rc2","ri21","ri22","ri23"));
 
+        final TextView noPregunta = (TextView) findViewById(R.id.textViewNoPreguntas);
 
-        // Inicializa el RecyclerView
-        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        if(preguntas.isEmpty()){
+            noPregunta.setVisibility(View.VISIBLE);
+        }else{
+            noPregunta.setVisibility(View.INVISIBLE);
+            // Inicializa el RecyclerView
+            final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
-        // Crea el Adaptador con los datos de la lista anterior
-        PreguntaAdapter adaptador = new PreguntaAdapter(preguntas);
+            // Crea el Adaptador con los datos de la lista anterior
+            PreguntaAdapter adaptador = new PreguntaAdapter(preguntas);
 
-        // Asocia el elemento de la lista con una acción al ser pulsado
-        adaptador.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Acción al pulsar el elemento
-                int position = recyclerView.getChildAdapterPosition(v);
-                Toast.makeText(ListadoActivity.this, "Posición: " + String.valueOf(position) + " Enunciado: " + preguntas.get(position).getEnunciado() + " Nombre: " + preguntas.get(position).getCategoria(), Toast.LENGTH_SHORT)
-                        .show();
-            }
-        });
+            // Asocia el elemento de la lista con una acción al ser pulsado
+            adaptador.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Acción al pulsar el elemento
+                    int position = recyclerView.getChildAdapterPosition(v);
+                    Toast.makeText(ListadoActivity.this, "Posición: " + String.valueOf(position) + " Enunciado: " + preguntas.get(position).getEnunciado() + " Nombre: " + preguntas.get(position).getCategoria(), Toast.LENGTH_SHORT)
+                            .show();
+                }
+            });
 
-        // Asocia el Adaptador al RecyclerView
-        recyclerView.setAdapter(adaptador);
+            // Asocia el Adaptador al RecyclerView
+            recyclerView.setAdapter(adaptador);
 
-        // Muestra el RecyclerView en vertical
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            // Muestra el RecyclerView en vertical
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        }
+
+
+
     }
     }
 
