@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 
 public class PreguntaAdapter
@@ -74,7 +75,7 @@ public class PreguntaAdapter
 
     @Override
     public void onClick(View view) {
-        if(listener != null)
+        if (listener != null)
             listener.onClick(view);
     }
 }

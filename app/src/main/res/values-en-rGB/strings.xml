@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">atested</string>
+    <string name="action_listado">Questions List</string>
+    <string name="action_configuracion">Configuration</string>
+    <string name="action_acercade">About us</string>
+    <string name="listado_provisional">Provisional LIst</string>
+    <string name="title_activity_listado">List</string>
+    <string name="title_activity_anyadir">AnyadirActivity</string>
+    <string name="write_permission_denied">Write permission denegated</string>
+    <string name="write_permission_granted">Write permission garanted</string>
+    <string name="write_permission_accepted">Write permission acepted</string>
+    <string name="write_permission_not_accepted">Write permission not acepted</string>
+</resources>

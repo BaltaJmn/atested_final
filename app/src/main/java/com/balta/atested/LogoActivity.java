@@ -19,8 +19,8 @@ public class LogoActivity extends AppCompatActivity {
             public void run() {
                 startActivity(new Intent(getApplicationContext(), ResumenActivity.class));
             }
-        }, 5000);
+        }, 1000);
     }
 
-    
+
 }

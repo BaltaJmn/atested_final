@@ -1,6 +1,8 @@
 package com.balta.atested;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -21,11 +23,14 @@ public class ListadoActivity extends AppCompatActivity {
 
     private static final String LOGTAG = "ListadoActivity";
     private ArrayList<Pregunta> preguntas;
+    private Context myContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado);
+
+        myContext = this;
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -40,7 +45,6 @@ public class ListadoActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
     @Override
@@ -78,17 +82,14 @@ public class ListadoActivity extends AppCompatActivity {
         MyLog.d(LOGTAG, "Iniciando OnResume...");
         super.onResume();
 
-
         // Crea una lista con los elementos a mostrar
-        preguntas = new ArrayList<Pregunta>();
-        preguntas.add(new Pregunta(1,"enunciado1","categoria1","rc1","ri11","ri12","ri13"));
-        preguntas.add(new Pregunta(2,"enunciado2","categoria2","rc2","ri21","ri22","ri23"));
+        preguntas = Repositorio.recuperarDatos(myContext);
 
         final TextView noPregunta = (TextView) findViewById(R.id.textViewNoPreguntas);
 
-        if(preguntas.isEmpty()){
+        if (preguntas.isEmpty()) {
             noPregunta.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             noPregunta.setVisibility(View.INVISIBLE);
             // Inicializa el RecyclerView
             final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -113,9 +114,6 @@ public class ListadoActivity extends AppCompatActivity {
             // Muestra el RecyclerView en vertical
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
         }
-
-
-
     }
-    }
+}
 

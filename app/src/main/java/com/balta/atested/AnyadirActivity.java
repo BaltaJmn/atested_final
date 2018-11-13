@@ -77,7 +77,7 @@ public class AnyadirActivity extends AppCompatActivity {
                         resp1.getText().toString().isEmpty() ||
                         resp2.getText().toString().isEmpty() ||
                         resp3.getText().toString().isEmpty() ||
-                        resp4.getText().toString().isEmpty() ) {
+                        resp4.getText().toString().isEmpty()) {
 
                     view.clearFocus();
                     if (view != null) {
@@ -93,7 +93,6 @@ public class AnyadirActivity extends AppCompatActivity {
                     Repositorio.insertar(nuevaPregunta, myContext);
                     finish();
                 }
-
 
 
             }

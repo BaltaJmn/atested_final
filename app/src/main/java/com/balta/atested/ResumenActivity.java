@@ -51,7 +51,8 @@ public class ResumenActivity extends AppCompatActivity {
                 startActivity(listadoIntent);
                 return true;
             case R.id.action_configuracion:
-                Log.i("ActionBar", "Configuracion");;
+                Log.i("ActionBar", "Configuracion");
+                ;
                 return true;
             case R.id.action_acercade:
                 Log.i("ActionBar", "Acerca De");

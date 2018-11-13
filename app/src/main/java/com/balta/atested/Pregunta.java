@@ -19,8 +19,8 @@ public class Pregunta {
         this.respuestaIncorrecta3 = respuestaIncorrecta3;
     }
 
-    public Pregunta(int codigo, String enunciado, String categoria, String respuestaCorrecta, String respuestaIncorrecta1, String respuestaIncorrecta2, String respuestaIncorrecta3) {
-        this.codigo = codigo;
+    public Pregunta(String codigo, String enunciado, String categoria, String respuestaCorrecta, String respuestaIncorrecta1, String respuestaIncorrecta2, String respuestaIncorrecta3) {
+        this.codigo = Integer.parseInt(codigo);
         this.enunciado = enunciado;
         this.categoria = categoria;
         this.respuestaCorrecta = respuestaCorrecta;

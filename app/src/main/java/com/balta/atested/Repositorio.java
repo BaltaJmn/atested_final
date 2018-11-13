@@ -1,7 +1,10 @@
 package com.balta.atested;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
 
 public class Repositorio {
 
@@ -12,22 +15,48 @@ public class Repositorio {
 
         //Abrimos la base de datos 'DBUsuarios' en modo escritura
         BaseDeDatesSQLiteHelper bdsql =
-                new BaseDeDatesSQLiteHelper(contexto, "DBUsuarios", null, 1);
+                new BaseDeDatesSQLiteHelper(contexto, "DBPreguntas", null, 1);
 
         SQLiteDatabase db = bdsql.getWritableDatabase();
 
         //Si hemos abierto correctamente la base de datos
         if (db != null) {
 
-                //Insertamos los datos en la tabla Usuarios
+            //Insertamos los datos en la tabla Usuarios
             db.execSQL("INSERT INTO Pregunta (enunciado, categoria, respuestaCorrecta, respuestaIncorrecta1 , respuestaIncorrecta2 , respuestaIncorrecta3 ) " +
-                    "VALUES ('" + p.getEnunciado() + "', '" + p.getCategoria() + "', '"+ p.getRespuestaCorrecta()+"', '"+ p.getRespuestaIncorrecta1()+"', '"+p.getRespuestaIncorrecta2()+"', '"+p.getRespuestaIncorrecta3()+"')");
+                    "VALUES ('" + p.getEnunciado() + "', '" + p.getCategoria() + "', '" + p.getRespuestaCorrecta() + "', '" + p.getRespuestaIncorrecta1() + "', '" + p.getRespuestaIncorrecta2() + "', '" + p.getRespuestaIncorrecta3() + "')");
 
             //Cerramos la base de datos
             db.close();
-        }else{valor=false;}
-            return valor;
+        } else {
+            valor = false;
+        }
+        return valor;
 
 
+    }
+
+    public static ArrayList<Pregunta> recuperarDatos(Context contexto) {
+
+        //Abrimos la base de datos 'DBUsuarios' en modo lectura
+        BaseDeDatesSQLiteHelper bdsql =
+                new BaseDeDatesSQLiteHelper(contexto, "DBPreguntas", null, 1);
+
+        SQLiteDatabase db = bdsql.getReadableDatabase();
+
+        Cursor c = db.rawQuery(" SELECT * FROM Pregunta ", null);
+
+        ArrayList<Pregunta> ArrayListPregunta = new ArrayList<Pregunta>();
+
+        if (c.moveToFirst()) {
+            //Recorremos el cursor hasta que no haya más registros
+            do {
+                ArrayListPregunta.add(new Pregunta(c.getString(c.getColumnIndex("codigo")), c.getString(c.getColumnIndex("enunciado")), c.getString(c.getColumnIndex("categoria")), c.getString(c.getColumnIndex("respuestaCorrecta")), c.getString(c.getColumnIndex("respuestaIncorrecta1")), c.getString(c.getColumnIndex("respuestaIncorrecta2")), c.getString(c.getColumnIndex("respuestaIncorrecta3"))));
+            } while (c.moveToNext());
+        }
+
+        db.close();
+
+        return ArrayListPregunta;
     }
 }
