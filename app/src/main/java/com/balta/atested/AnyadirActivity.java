@@ -37,7 +37,7 @@ public class AnyadirActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         final Spinner spinner = (Spinner) findViewById(R.id.spinnerCategoria);
-        String[] letra = {"A", "B", "C", "D", "E"};
+        String[] letra = {"Montaje y mantenimiento de equipos", "Redes locales", "Aplicaciones ofimáticas", "Sistemas operativos monopuesto", "Formación y Orientación Laboral"};
         spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, letra));
 
         Button guardar = findViewById(R.id.buttonGuardar);

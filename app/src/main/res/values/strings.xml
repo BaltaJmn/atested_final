@@ -10,5 +10,6 @@
     <string name="write_permission_granted">Permisos escritura garantizados</string>
     <string name="write_permission_accepted">Permisos escritura aceptados</string>
     <string name="write_permission_not_accepted">Permisos escritura no aceptados</string>
+    <string name="intro">\n</string>
 
 </resources>

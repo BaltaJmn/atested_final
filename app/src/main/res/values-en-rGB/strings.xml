@@ -11,4 +11,5 @@
     <string name="write_permission_granted">Write permission garanted</string>
     <string name="write_permission_accepted">Write permission acepted</string>
     <string name="write_permission_not_accepted">Write permission not acepted</string>
+    <string name="intro">\n</string>
 </resources>
