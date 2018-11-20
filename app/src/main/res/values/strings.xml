@@ -11,5 +11,9 @@
     <string name="write_permission_accepted">Permisos escritura aceptados</string>
     <string name="write_permission_not_accepted">Permisos escritura no aceptados</string>
     <string name="intro">\n</string>
+    <string name="add_new_option">Añadir nueva opcion</string>
+    <string name="your_option">Tu opción</string>
+    <string name="add">añadir</string>
+    <string name="cancel">cancelar</string>
 
 </resources>

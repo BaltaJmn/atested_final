@@ -2,6 +2,7 @@ package com.balta.atested;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,9 +10,11 @@ import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
@@ -19,11 +22,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+
 public class AnyadirEditarActivity extends AppCompatActivity {
 
     final private int CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 123;
     private Context myContext;
     private ConstraintLayout constraintLayoutAnyadirActivity;
+    private ArrayAdapter<String> adapter;
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +43,58 @@ public class AnyadirEditarActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final Spinner spinner = (Spinner) findViewById(R.id.spinnerCategoria);
-        String[] letra = {"Montaje y mantenimiento de equipos", "Redes locales", "Aplicaciones ofimáticas", "Sistemas operativos monopuesto", "Formación y Orientación Laboral"};
-        spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, letra));
+        // Definición de la lista de opciones
+        ArrayList<String> items = Repositorio.recuperarCategorias(myContext);
+
+        // Definición del Adaptador que contiene la lista de opciones
+        adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, items);
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+
+        // Definición del Spinner
+        spinner = (Spinner) findViewById(R.id.spinnerCategoria);
+        spinner.setAdapter(adapter);
+
+        // Definición de la acción del botón
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Recuperación de la vista del AlertDialog a partir del layout de la Actividad
+                LayoutInflater layoutActivity = LayoutInflater.from(myContext);
+                View viewAlertDialog = layoutActivity.inflate(R.layout.alert_dialog, null);
+
+                // Definición del AlertDialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(myContext);
+
+                // Asignación del AlertDialog a su vista
+                alertDialog.setView(viewAlertDialog);
+
+                // Recuperación del EditText del AlertDialog
+                final EditText dialogInput = (EditText) viewAlertDialog.findViewById(R.id.dialogInput);
+
+                // Configuración del AlertDialog
+                alertDialog
+                        .setCancelable(false)
+                        // Botón Añadir
+                        .setPositiveButton(getResources().getString(R.string.add),
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialogBox, int id) {
+                                        adapter.add(dialogInput.getText().toString());
+                                        spinner.setSelection(adapter.getPosition(dialogInput.getText().toString()));
+                                    }
+                                })
+                        // Botón Cancelar
+                        .setNegativeButton(getResources().getString(R.string.cancel),
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialogBox, int id) {
+                                        dialogBox.cancel();
+                                    }
+                                })
+                        .create()
+                        .show();
+            }
+        });
+
 
         Button guardar = findViewById(R.id.buttonGuardar);
         final EditText enunciado = (EditText) findViewById(R.id.editTextEnunciado);
@@ -48,11 +104,10 @@ public class AnyadirEditarActivity extends AppCompatActivity {
         final EditText resp4 = (EditText) findViewById(R.id.editTextIncorrecta3);
         final Spinner spinner1 = (Spinner) findViewById(R.id.spinnerCategoria);
 
-        if(this.getIntent().getExtras() != null) {
+        if (this.getIntent().getExtras() != null) {
             Bundle bundle = this.getIntent().getExtras();
 
-            Integer codigo = bundle.getInt("codigo");
-
+            int codigo = bundle.getInt("codigo");
 
             Pregunta p = Repositorio.recuperarPreguntaSelec(myContext, codigo);
             enunciado.setText(p.getEnunciado());
@@ -60,6 +115,8 @@ public class AnyadirEditarActivity extends AppCompatActivity {
             resp2.setText(p.getRespuestaIncorrecta1());
             resp3.setText(p.getRespuestaIncorrecta2());
             resp4.setText(p.getRespuestaIncorrecta3());
+
+            Repositorio.borrarPreguntaEditada(myContext, codigo);
 
         }
 

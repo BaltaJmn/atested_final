@@ -11,12 +11,12 @@
 
     <Spinner
         android:id="@+id/spinnerCategoria"
-        android:layout_width="0dp"
-        android:layout_height="23dp"
+        android:layout_width="291dp"
+        android:layout_height="22dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEnunciado" />
@@ -90,4 +90,19 @@
         android:text="Guardar"
         app:layout_constraintStart_toEndOf="@+id/editTextEnunciado"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="52dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="381dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spinnerCategoria"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGuardar"
+        app:layout_constraintVertical_bias="0.49" />
 </android.support.constraint.ConstraintLayout>

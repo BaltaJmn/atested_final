@@ -80,4 +80,40 @@ public class Repositorio {
 
         return preguntaSelec;
     }
+
+    public static ArrayList<String> recuperarCategorias(Context contexto) {
+
+        //Abrimos la base de datos 'DBUsuarios' en modo lectura
+        BaseDeDatesSQLiteHelper bdsql =
+                new BaseDeDatesSQLiteHelper(contexto, "DBPreguntas", null, 1);
+
+        SQLiteDatabase db = bdsql.getReadableDatabase();
+
+        Cursor c = db.rawQuery(" SELECT DISTINCT categoria FROM Pregunta ", null);
+
+        ArrayList<String> ArrayListCategoria = new ArrayList<String>();
+
+        if (c.moveToFirst()) {
+            //Recorremos el cursor hasta que no haya más registros
+            do {
+                ArrayListCategoria.add(c.getString(0));
+            } while (c.moveToNext());
+        }
+
+        db.close();
+
+        return ArrayListCategoria;
+    }
+
+    public static void borrarPreguntaEditada(Context contexto, int codigo) {
+
+        //Abrimos la base de datos 'DBUsuarios' en modo lectura
+        BaseDeDatesSQLiteHelper bdsql =
+                new BaseDeDatesSQLiteHelper(contexto, "DBPreguntas", null, 1);
+
+        SQLiteDatabase db = bdsql.getReadableDatabase();
+
+        db.execSQL(" DELETE FROM Pregunta WHERE codigo = " + codigo);
+
+    }
 }
