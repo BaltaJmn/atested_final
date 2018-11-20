@@ -2,18 +2,13 @@ package com.balta.atested;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +35,7 @@ public class ListadoActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent listadoIntent = new Intent(ListadoActivity.this, AnyadirActivity.class);
+                Intent listadoIntent = new Intent(ListadoActivity.this, AnyadirEditarActivity.class);
                 startActivity(listadoIntent);
             }
         });
@@ -103,8 +98,22 @@ public class ListadoActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     // Acción al pulsar el elemento
                     int position = recyclerView.getChildAdapterPosition(v);
-                    Toast.makeText(ListadoActivity.this, "Posición: " + String.valueOf(position) + " Enunciado: " + preguntas.get(position).getEnunciado() + " Nombre: " + preguntas.get(position).getCategoria(), Toast.LENGTH_SHORT)
-                            .show();
+                    /*Toast.makeText(ListadoActivity.this, "Posición: " + String.valueOf(position) + " Enunciado: " + preguntas.get(position).getEnunciado() + " Nombre: " + preguntas.get(position).getCategoria(), Toast.LENGTH_SHORT)
+                            .show();*/
+
+                    Intent editarpregunta= new Intent(ListadoActivity.this, AnyadirEditarActivity.class);
+
+                    //Creamos la información a pasar entre actividades
+                    Bundle b = new Bundle();
+                    b.putInt("codigo", preguntas.get(position).getCodigo());
+
+                    //Añadimos la información al intent
+                    editarpregunta.putExtras(b);
+
+                    //Iniciamos la nueva actividad
+                    startActivity(editarpregunta);
+
+                    //Repositorio.recuperarPreguntaSelec(myContext, preguntas.get(position).getCodigo());
                 }
             });
 

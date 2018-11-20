@@ -59,4 +59,25 @@ public class Repositorio {
 
         return ArrayListPregunta;
     }
+
+    public static Pregunta recuperarPreguntaSelec(Context contexto, int codigo) {
+
+        //Abrimos la base de datos 'DBUsuarios' en modo lectura
+        BaseDeDatesSQLiteHelper bdsql =
+                new BaseDeDatesSQLiteHelper(contexto, "DBPreguntas", null, 1);
+
+        SQLiteDatabase db = bdsql.getReadableDatabase();
+
+        Cursor c = db.rawQuery(" SELECT * FROM Pregunta WHERE codigo = " + codigo, null);
+
+        Pregunta preguntaSelec = new Pregunta(null, null, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            preguntaSelec = new Pregunta(c.getString(c.getColumnIndex("codigo")), c.getString(c.getColumnIndex("enunciado")), c.getString(c.getColumnIndex("categoria")), c.getString(c.getColumnIndex("respuestaCorrecta")), c.getString(c.getColumnIndex("respuestaIncorrecta1")), c.getString(c.getColumnIndex("respuestaIncorrecta2")), c.getString(c.getColumnIndex("respuestaIncorrecta3")));
+        }
+
+        db.close();
+
+        return preguntaSelec;
+    }
 }

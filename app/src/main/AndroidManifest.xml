@@ -28,7 +28,7 @@
             android:label="@string/title_activity_listado"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".AnyadirActivity"
+            android:name=".AnyadirEditarActivity"
             android:label="@string/title_activity_anyadir"
             android:theme="@style/AppTheme"></activity>
     </application>

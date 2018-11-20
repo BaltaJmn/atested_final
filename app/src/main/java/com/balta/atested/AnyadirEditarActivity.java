@@ -19,7 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-public class AnyadirActivity extends AppCompatActivity {
+public class AnyadirEditarActivity extends AppCompatActivity {
 
     final private int CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 123;
     private Context myContext;
@@ -48,6 +48,21 @@ public class AnyadirActivity extends AppCompatActivity {
         final EditText resp4 = (EditText) findViewById(R.id.editTextIncorrecta3);
         final Spinner spinner1 = (Spinner) findViewById(R.id.spinnerCategoria);
 
+        if(this.getIntent().getExtras() != null) {
+            Bundle bundle = this.getIntent().getExtras();
+
+            Integer codigo = bundle.getInt("codigo");
+
+
+            Pregunta p = Repositorio.recuperarPreguntaSelec(myContext, codigo);
+            enunciado.setText(p.getEnunciado());
+            resp1.setText(p.getRespuestaCorrecta());
+            resp2.setText(p.getRespuestaIncorrecta1());
+            resp3.setText(p.getRespuestaIncorrecta2());
+            resp4.setText(p.getRespuestaIncorrecta3());
+
+        }
+
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +75,7 @@ public class AnyadirActivity extends AppCompatActivity {
                     // A partir de Marshmallow (6.0) se pide aceptar o rechazar el permiso en tiempo de ejecución
                     // En las versiones anteriores no es posible hacerlo
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        ActivityCompat.requestPermissions(AnyadirActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, CODE_WRITE_EXTERNAL_STORAGE_PERMISSION);
+                        ActivityCompat.requestPermissions(AnyadirEditarActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, CODE_WRITE_EXTERNAL_STORAGE_PERMISSION);
                         // Una vez que se pide aceptar o rechazar el permiso se ejecuta el método "onRequestPermissionsResult" para manejar la respuesta
                         // Si el usuario marca "No preguntar más" no se volverá a mostrar este diálogo
                     } else {
