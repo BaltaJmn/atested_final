@@ -112,8 +112,6 @@ public class ListadoActivity extends AppCompatActivity {
 
                     //Iniciamos la nueva actividad
                     startActivity(editarpregunta);
-
-                    //Repositorio.recuperarPreguntaSelec(myContext, preguntas.get(position).getCodigo());
                 }
             });
 
