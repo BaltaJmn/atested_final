@@ -116,4 +116,21 @@ public class Repositorio {
         db.execSQL(" DELETE FROM Pregunta WHERE codigo = " + codigo);
 
     }
+
+    public static void actualizarPreguntaEditada(Context contexto, int codigo, Pregunta p) {
+
+        //Abrimos la base de datos 'DBUsuarios' en modo lectura
+        BaseDeDatesSQLiteHelper bdsql =
+                new BaseDeDatesSQLiteHelper(contexto, "DBPreguntas", null, 1);
+
+        SQLiteDatabase db = bdsql.getReadableDatabase();
+
+        db.execSQL(" UPDATE Pregunta SET " +
+                "enunciado = '" + p.getEnunciado() + "' , " +
+                "categoria = '" + p.getCategoria() + "' , " +
+                "respuestaCorrecta = '" + p.getRespuestaCorrecta() + "' , " +
+                "respuestaIncorrecta1 = '" + p.getRespuestaIncorrecta1() + "' , " +
+                "respuestaIncorrecta2 = '" + p.getRespuestaIncorrecta2() + "' , " +
+                "respuestaIncorrecta3 = '" + p.getRespuestaIncorrecta3()  +"' WHERE codigo = " + codigo);
+    }
 }

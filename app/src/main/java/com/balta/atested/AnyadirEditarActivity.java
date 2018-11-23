@@ -31,6 +31,8 @@ public class AnyadirEditarActivity extends AppCompatActivity {
     private ConstraintLayout constraintLayoutAnyadirActivity;
     private ArrayAdapter<String> adapter;
     private Spinner spinner;
+    private int codigo;
+    private Pregunta p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,17 +109,20 @@ public class AnyadirEditarActivity extends AppCompatActivity {
         if (this.getIntent().getExtras() != null) {
             Bundle bundle = this.getIntent().getExtras();
 
-            int codigo = bundle.getInt("codigo");
+            codigo = bundle.getInt("codigo");
 
-            Pregunta p = Repositorio.recuperarPreguntaSelec(myContext, codigo);
+            p = Repositorio.recuperarPreguntaSelec(myContext, codigo);
             enunciado.setText(p.getEnunciado());
             resp1.setText(p.getRespuestaCorrecta());
             resp2.setText(p.getRespuestaIncorrecta1());
             resp3.setText(p.getRespuestaIncorrecta2());
             resp4.setText(p.getRespuestaIncorrecta3());
 
-            Repositorio.borrarPreguntaEditada(myContext, codigo);
+            //Repositorio.actualizarPreguntaEditada(myContext, codigo, p);
+            //Repositorio.borrarPreguntaEditada(myContext, codigo);
 
+        }else{
+            codigo= -1;
         }
 
         guardar.setOnClickListener(new View.OnClickListener() {
@@ -161,8 +166,17 @@ public class AnyadirEditarActivity extends AppCompatActivity {
                             .setAction("Action", null).show();
                 } else {
 
-                    Pregunta nuevaPregunta = new Pregunta(enunciado.getText().toString(), spinner1.getSelectedItem().toString(), resp1.getText().toString(), resp2.getText().toString(), resp3.getText().toString(), resp4.getText().toString());
-                    Repositorio.insertar(nuevaPregunta, myContext);
+
+                    if(codigo != -1){
+                        Pregunta nuevaPregunta = new Pregunta(Integer.toString(codigo), enunciado.getText().toString(), spinner1.getSelectedItem().toString(), resp1.getText().toString(), resp2.getText().toString(), resp3.getText().toString(), resp4.getText().toString());
+                        Repositorio.actualizarPreguntaEditada(myContext, codigo, nuevaPregunta);
+
+                    } else {
+                        Pregunta nuevaPregunta = new Pregunta(enunciado.getText().toString(), spinner1.getSelectedItem().toString(), resp1.getText().toString(), resp2.getText().toString(), resp3.getText().toString(), resp4.getText().toString());
+                        Repositorio.insertar(nuevaPregunta, myContext);
+                    }
+
+
                     finish();
                 }
 
