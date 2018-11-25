@@ -1,6 +1,7 @@
 package com.balta.atested;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
@@ -23,6 +24,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+
+import static com.balta.atested.R.color.rellenaCampo;
 
 public class AnyadirEditarActivity extends AppCompatActivity {
 
@@ -126,6 +129,7 @@ public class AnyadirEditarActivity extends AppCompatActivity {
         }
 
         guardar.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
 
@@ -151,10 +155,55 @@ public class AnyadirEditarActivity extends AppCompatActivity {
                 }
 
                 if (enunciado.getText().toString().isEmpty() ||
+                        spinner1.getSelectedItem() == null   ||
                         resp1.getText().toString().isEmpty() ||
                         resp2.getText().toString().isEmpty() ||
                         resp3.getText().toString().isEmpty() ||
                         resp4.getText().toString().isEmpty()) {
+
+                    if(enunciado.getText().toString().isEmpty()){
+                        enunciado.setBackgroundColor(R.color.rellenaCampo);
+
+                        Snackbar.make(view, "Rellena el enunciado", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                    }
+
+                    if(spinner1.getSelectedItem() == null){
+                        spinner1.setBackgroundColor(R.color.rellenaCampo);
+
+                        Snackbar.make(view, "Rellena la categoria", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                    }
+
+                    if(resp1.getText().toString().isEmpty()){
+                        resp1.setBackgroundColor(R.color.rellenaCampo);
+
+                        Snackbar.make(view, "Rellena la respuesta 1", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                    }
+
+                    if(resp2.getText().toString().isEmpty()){
+                        resp2.setBackgroundColor(R.color.rellenaCampo);
+
+                        Snackbar.make(view, "Rellena la respuesta 2", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                    }
+
+                    if(resp3.getText().toString().isEmpty()){
+                        resp3.setBackgroundColor(R.color.rellenaCampo);
+
+                        Snackbar.make(view, "Rellena la respuesta 3", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                    }
+
+                    if(resp4.getText().toString().isEmpty()){
+                        resp4.setBackgroundColor(R.color.rellenaCampo);
+
+                        Snackbar.make(view, "Rellena la respuesta 4", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                    }
+
+
 
                     view.clearFocus();
                     if (view != null) {
@@ -162,8 +211,10 @@ public class AnyadirEditarActivity extends AppCompatActivity {
                         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                     }
 
+                    /*
                     Snackbar.make(view, "Rellenar todos los campos", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
+                            */
                 } else {
 
 
