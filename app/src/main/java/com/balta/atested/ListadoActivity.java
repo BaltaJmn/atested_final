@@ -1,14 +1,20 @@
 package com.balta.atested;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +25,7 @@ public class ListadoActivity extends AppCompatActivity {
     private static final String LOGTAG = "ListadoActivity";
     private ArrayList<Pregunta> preguntas;
     private Context myContext;
+    private Bundle b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +33,7 @@ public class ListadoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_listado);
 
         myContext = this;
+        b = new Bundle();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -86,8 +94,98 @@ public class ListadoActivity extends AppCompatActivity {
             noPregunta.setVisibility(View.VISIBLE);
         } else {
             noPregunta.setVisibility(View.INVISIBLE);
+
             // Inicializa el RecyclerView
             final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+
+            ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
+
+                @Override
+                public boolean onMove(RecyclerView recyclerView,RecyclerView.ViewHolder viewHolder,RecyclerView.ViewHolder target){
+                    return false;
+                }
+
+                @Override
+                public void onSwiped(final RecyclerView.ViewHolder viewHolder, int direction) {
+                    final int position = viewHolder.getAdapterPosition();
+
+                    if(direction == ItemTouchHelper.LEFT){
+                        // Recuperación de la vista del AlertDialog a partir del layout de la Actividad
+                        LayoutInflater layoutActivity = LayoutInflater.from(myContext);
+                        View viewAlertDialog = layoutActivity.inflate(R.layout.alert_dialog_borrar_pregunta, null);
+
+                        // Definición del AlertDialog
+                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(myContext);
+
+                        // Asignación del AlertDialog a su vista
+                        alertDialog.setView(viewAlertDialog);
+
+                        // Recuperación del EditText del AlertDialog
+                        final EditText dialogInput = (EditText) viewAlertDialog.findViewById(R.id.dialogInput);
+
+                        // Configuración del AlertDialog
+                        alertDialog
+                                .setCancelable(false)
+                                // Botón Añadir
+                                .setPositiveButton(getResources().getString(R.string.delete_pregunta),
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialogBox, int id) {
+                                                Repositorio.borrarPreguntaEditada(myContext, preguntas.get(position).getCodigo());
+                                            }
+                                        })
+                                // Botón Cancelar
+                                .setNegativeButton(getResources().getString(R.string.cancel),
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialogBox, int id) {
+                                                dialogBox.cancel();
+                                            }
+                                        })
+                                .create()
+                                .show();
+                    }
+
+                    if(direction == ItemTouchHelper.RIGHT){
+                        // Recuperación de la vista del AlertDialog a partir del layout de la Actividad
+                        LayoutInflater layoutActivity = LayoutInflater.from(myContext);
+                        View viewAlertDialog = layoutActivity.inflate(R.layout.alert_dialog_borrar_pregunta, null);
+
+                        // Definición del AlertDialog
+                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(myContext);
+
+                        // Asignación del AlertDialog a su vista
+                        alertDialog.setView(viewAlertDialog);
+
+                        // Recuperación del EditText del AlertDialog
+                        final EditText dialogInput = (EditText) viewAlertDialog.findViewById(R.id.dialogInput);
+
+                        // Configuración del AlertDialog
+                        alertDialog
+                                .setCancelable(false)
+                                // Botón Añadir
+                                .setPositiveButton(getResources().getString(R.string.delete_pregunta),
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialogBox, int id) {
+                                                Repositorio.borrarPreguntaEditada(myContext, preguntas.get(position).getCodigo());
+                                            }
+                                        })
+                                // Botón Cancelar
+                                .setNegativeButton(getResources().getString(R.string.cancel),
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialogBox, int id) {
+                                                dialogBox.cancel();
+                                            }
+                                        })
+                                .create()
+                                .show();
+                    }
+                }
+            };
+
+            ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+            itemTouchHelper.attachToRecyclerView(recyclerView);
+
+
+
 
             // Crea el Adaptador con los datos de la lista anterior
             PreguntaAdapter adaptador = new PreguntaAdapter(preguntas);
@@ -104,7 +202,6 @@ public class ListadoActivity extends AppCompatActivity {
                     Intent editarpregunta= new Intent(ListadoActivity.this, AnyadirEditarActivity.class);
 
                     //Creamos la información a pasar entre actividades
-                    Bundle b = new Bundle();
                     b.putInt("codigo", preguntas.get(position).getCodigo());
 
                     //Añadimos la información al intent

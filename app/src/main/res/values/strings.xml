@@ -15,5 +15,7 @@
     <string name="your_option">Tu opción</string>
     <string name="add">añadir</string>
     <string name="cancel">cancelar</string>
+    <string name="confirmacionBorrarPregunta">¿Está seguro de que desea eliminar la pregunta?</string>
+    <string name="delete_pregunta">Borrar</string>
 
 </resources>
