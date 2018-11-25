@@ -133,4 +133,50 @@ public class Repositorio {
                 "respuestaIncorrecta2 = '" + p.getRespuestaIncorrecta2() + "' , " +
                 "respuestaIncorrecta3 = '" + p.getRespuestaIncorrecta3()  +"' WHERE codigo = " + codigo);
     }
+
+    public static String contarCategoria(Context contexto){
+        int contador = 0;
+
+        //Abrimos la base de datos 'DBUsuarios' en modo lectura
+        BaseDeDatesSQLiteHelper bdsql =
+                new BaseDeDatesSQLiteHelper(contexto, "DBPreguntas", null, 1);
+
+        SQLiteDatabase db = bdsql.getReadableDatabase();
+
+        Cursor c = db.rawQuery(" SELECT DISTINCT categoria FROM Pregunta ", null);
+
+        if (c.moveToFirst()) {
+            //Recorremos el cursor hasta que no haya más registros
+            do {
+                contador ++;
+            } while (c.moveToNext());
+        }
+
+        db.close();
+
+        return Integer.toString(contador);
+    }
+
+    public static String contarPregunta(Context contexto){
+        int contador = 0;
+
+        //Abrimos la base de datos 'DBUsuarios' en modo lectura
+        BaseDeDatesSQLiteHelper bdsql =
+                new BaseDeDatesSQLiteHelper(contexto, "DBPreguntas", null, 1);
+
+        SQLiteDatabase db = bdsql.getReadableDatabase();
+
+        Cursor c = db.rawQuery(" SELECT * FROM Pregunta ", null);
+
+        if (c.moveToFirst()) {
+            //Recorremos el cursor hasta que no haya más registros
+            do {
+                contador ++;
+            } while (c.moveToNext());
+        }
+
+        db.close();
+
+        return Integer.toString(contador);
+    }
 }
