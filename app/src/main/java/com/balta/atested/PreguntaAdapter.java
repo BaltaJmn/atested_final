@@ -24,6 +24,7 @@ public class PreguntaAdapter
 
         private TextView TextView_enunciado;
         private TextView TextView_categoria;
+        private int contador;
 
         public PreguntaViewHolder(View itemView) {
             super(itemView);
@@ -32,7 +33,15 @@ public class PreguntaAdapter
         }
 
         public void PreguntaBind(Pregunta pregunta) {
-            TextView_enunciado.setText(pregunta.getEnunciado());
+            contador = pregunta.getEnunciado().length();
+
+            if(contador > 20){
+                TextView_enunciado.setText(pregunta.getEnunciado().substring(0,10) + "...");
+            } else {
+                TextView_enunciado.setText(pregunta.getEnunciado());
+            }
+
+
             TextView_categoria.setText(pregunta.getCategoria());
         }
     }

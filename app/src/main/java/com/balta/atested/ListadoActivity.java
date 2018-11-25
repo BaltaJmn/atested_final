@@ -174,8 +174,6 @@ public class ListadoActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     // Acción al pulsar el elemento
                     int position = recyclerView.getChildAdapterPosition(v);
-                    /*Toast.makeText(ListadoActivity.this, "Posición: " + String.valueOf(position) + " Enunciado: " + preguntas.get(position).getEnunciado() + " Nombre: " + preguntas.get(position).getCategoria(), Toast.LENGTH_SHORT)
-                            .show();*/
 
                     Intent editarpregunta= new Intent(ListadoActivity.this, AnyadirEditarActivity.class);
 
