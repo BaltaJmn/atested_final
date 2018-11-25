@@ -26,6 +26,7 @@ public class ListadoActivity extends AppCompatActivity {
     private ArrayList<Pregunta> preguntas;
     private Context myContext;
     private Bundle b;
+    private Intent restart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,36 +50,6 @@ public class ListadoActivity extends AppCompatActivity {
         });
     }
 
-
-    @Override
-    protected void onStart() {
-        MyLog.d(LOGTAG, "Iniciando OnStart...");
-        super.onStart();
-    }
-
-    @Override
-    protected void onRestart() {
-        MyLog.d(LOGTAG, "Iniciando OnRestart...");
-        super.onRestart();
-    }
-
-    @Override
-    protected void onStop() {
-        MyLog.d(LOGTAG, "Iniciando OnStop...");
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        MyLog.d(LOGTAG, "Iniciando OnDestroy...");
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onPause() {
-        MyLog.d(LOGTAG, "Iniciando OnPause...");
-        super.onPause();
-    }
 
     @Override
     protected void onResume() {
@@ -131,6 +102,9 @@ public class ListadoActivity extends AppCompatActivity {
                                         new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialogBox, int id) {
                                                 Repositorio.borrarPreguntaEditada(myContext, preguntas.get(position).getCodigo());
+                                                restart = getIntent();
+                                                finish();
+                                                startActivity(restart);
                                             }
                                         })
                                 // Botón Cancelar
@@ -142,6 +116,7 @@ public class ListadoActivity extends AppCompatActivity {
                                         })
                                 .create()
                                 .show();
+
                     }
 
                     if(direction == ItemTouchHelper.RIGHT){
@@ -166,6 +141,9 @@ public class ListadoActivity extends AppCompatActivity {
                                         new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialogBox, int id) {
                                                 Repositorio.borrarPreguntaEditada(myContext, preguntas.get(position).getCodigo());
+                                                restart = getIntent();
+                                                finish();
+                                                startActivity(restart);
                                             }
                                         })
                                 // Botón Cancelar
@@ -218,6 +196,36 @@ public class ListadoActivity extends AppCompatActivity {
             // Muestra el RecyclerView en vertical
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
         }
+    }
+
+    @Override
+    protected void onStart() {
+        MyLog.d(LOGTAG, "Iniciando OnStart...");
+        super.onStart();
+    }
+
+    @Override
+    protected void onRestart() {
+        MyLog.d(LOGTAG, "Iniciando OnRestart...");
+        super.onRestart();
+    }
+
+    @Override
+    protected void onStop() {
+        MyLog.d(LOGTAG, "Iniciando OnStop...");
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        MyLog.d(LOGTAG, "Iniciando OnDestroy...");
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        MyLog.d(LOGTAG, "Iniciando OnPause...");
+        super.onPause();
     }
 }
 
