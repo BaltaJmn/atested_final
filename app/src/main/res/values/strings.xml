@@ -17,5 +17,22 @@
     <string name="cancel">cancelar</string>
     <string name="confirmacionBorrarPregunta">¿Está seguro de que desea eliminar la pregunta?</string>
     <string name="delete_pregunta">Borrar</string>
+    <string name="AcercaDeTitulo">Aplicación desarrollada por Baltasar Jiménez Rincón</string>
+    <string name="AnyadirEnunciado">Enunciado</string>
+    <string name="AnyadirRespuestaCorrecta">Respuesta correcta</string>
+    <string name="AnyadirRespuestaIncorrecta">Respuesta Incorrecta</string>
+    <string name="AnyadirRespuestaIncorrecta">Respuesta Incorrecta</string>
+    <string name="AnyadirRespuestaIncorrecta">Respuesta Incorrecta</string>
+    <string name="AnyadirGuardar">Guardar</string>
+    <string name="AnyadirModCat">ModCat</string>
+    <string name="noImplementado">No hay ninguna pregunta en el listado</string>
+    <string name="preguntas_disponibles">Preguntas Disponibles:</string>
+    <string name="categorias_disponibles">Categorias Disponibles:</string>
+    <string name="cuestionarios_realizados">Cuestionarios Realizados:</string>
+    <string name="calificaci_n_media">Calificación Media:</string>
+    <string name="_0">0</string>
+    <string name="_0">0</string>
+    <string name="_0">0</string>
+    <string name="_0">0</string>
 
 </resources>

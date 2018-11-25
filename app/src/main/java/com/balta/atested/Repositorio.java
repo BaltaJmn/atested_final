@@ -131,10 +131,10 @@ public class Repositorio {
                 "respuestaCorrecta = '" + p.getRespuestaCorrecta() + "' , " +
                 "respuestaIncorrecta1 = '" + p.getRespuestaIncorrecta1() + "' , " +
                 "respuestaIncorrecta2 = '" + p.getRespuestaIncorrecta2() + "' , " +
-                "respuestaIncorrecta3 = '" + p.getRespuestaIncorrecta3()  +"' WHERE codigo = " + codigo);
+                "respuestaIncorrecta3 = '" + p.getRespuestaIncorrecta3() + "' WHERE codigo = " + codigo);
     }
 
-    public static String contarCategoria(Context contexto){
+    public static String contarCategoria(Context contexto) {
         int contador = 0;
 
         //Abrimos la base de datos 'DBUsuarios' en modo lectura
@@ -148,7 +148,7 @@ public class Repositorio {
         if (c.moveToFirst()) {
             //Recorremos el cursor hasta que no haya más registros
             do {
-                contador ++;
+                contador++;
             } while (c.moveToNext());
         }
 
@@ -157,7 +157,7 @@ public class Repositorio {
         return Integer.toString(contador);
     }
 
-    public static String contarPregunta(Context contexto){
+    public static String contarPregunta(Context contexto) {
         int contador = 0;
 
         //Abrimos la base de datos 'DBUsuarios' en modo lectura
@@ -171,7 +171,7 @@ public class Repositorio {
         if (c.moveToFirst()) {
             //Recorremos el cursor hasta que no haya más registros
             do {
-                contador ++;
+                contador++;
             } while (c.moveToNext());
         }
 

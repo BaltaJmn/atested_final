@@ -9,6 +9,8 @@ import java.util.TimerTask;
 
 public class LogoActivity extends AppCompatActivity {
 
+    private static final String LOGTAG = "LogoActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +22,42 @@ public class LogoActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), ResumenActivity.class));
             }
         }, 1000);
+    }
+
+    @Override
+    protected void onStart() {
+        MyLog.d(LOGTAG, "Iniciando OnStart...");
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        MyLog.d(LOGTAG, "Iniciando OnResume...");
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        MyLog.d(LOGTAG, "Iniciando OnPause...");
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        MyLog.d(LOGTAG, "Iniciando OnStop...");
+        super.onStop();
+    }
+
+    @Override
+    protected void onRestart() {
+        MyLog.d(LOGTAG, "Iniciando OnRestart...");
+        super.onRestart();
+    }
+
+    @Override
+    protected void onDestroy() {
+        MyLog.d(LOGTAG, "Iniciando OnDestroy...");
+        super.onDestroy();
     }
 
 

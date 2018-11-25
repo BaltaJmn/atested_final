@@ -65,7 +65,7 @@ public class ResumenActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         Intent a = new Intent(Intent.ACTION_MAIN);
         a.addCategory(Intent.CATEGORY_HOME);
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -95,5 +95,35 @@ public class ResumenActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    protected void onStart() {
+        MyLog.d(LOGTAG, "Iniciando OnStart...");
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        MyLog.d(LOGTAG, "Iniciando OnPause...");
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        MyLog.d(LOGTAG, "Iniciando OnStop...");
+        super.onStop();
+    }
+
+    @Override
+    protected void onRestart() {
+        MyLog.d(LOGTAG, "Iniciando OnRestart...");
+        super.onRestart();
+    }
+
+    @Override
+    protected void onDestroy() {
+        MyLog.d(LOGTAG, "Iniciando OnDestroy...");
+        super.onDestroy();
     }
 }

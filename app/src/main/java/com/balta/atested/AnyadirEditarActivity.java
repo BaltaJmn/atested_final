@@ -29,6 +29,7 @@ import static com.balta.atested.R.color.rellenaCampo;
 
 public class AnyadirEditarActivity extends AppCompatActivity {
 
+    private static final String LOGTAG = "AnyadirEditarActivity";
     final private int CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 123;
     private Context myContext;
     private ConstraintLayout constraintLayoutAnyadirActivity;
@@ -124,8 +125,8 @@ public class AnyadirEditarActivity extends AppCompatActivity {
             //Repositorio.actualizarPreguntaEditada(myContext, codigo, p);
             //Repositorio.borrarPreguntaEditada(myContext, codigo);
 
-        }else{
-            codigo= -1;
+        } else {
+            codigo = -1;
         }
 
         guardar.setOnClickListener(new View.OnClickListener() {
@@ -155,54 +156,53 @@ public class AnyadirEditarActivity extends AppCompatActivity {
                 }
 
                 if (enunciado.getText().toString().isEmpty() ||
-                        spinner1.getSelectedItem() == null   ||
+                        spinner1.getSelectedItem() == null ||
                         resp1.getText().toString().isEmpty() ||
                         resp2.getText().toString().isEmpty() ||
                         resp3.getText().toString().isEmpty() ||
                         resp4.getText().toString().isEmpty()) {
 
-                    if(enunciado.getText().toString().isEmpty()){
+                    if (enunciado.getText().toString().isEmpty()) {
                         enunciado.setBackgroundColor(R.color.rellenaCampo);
 
                         Snackbar.make(view, "Rellena el enunciado", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     }
 
-                    if(spinner1.getSelectedItem() == null){
+                    if (spinner1.getSelectedItem() == null) {
                         spinner1.setBackgroundColor(R.color.rellenaCampo);
 
                         Snackbar.make(view, "Rellena la categoria", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     }
 
-                    if(resp1.getText().toString().isEmpty()){
+                    if (resp1.getText().toString().isEmpty()) {
                         resp1.setBackgroundColor(R.color.rellenaCampo);
 
                         Snackbar.make(view, "Rellena la respuesta 1", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     }
 
-                    if(resp2.getText().toString().isEmpty()){
+                    if (resp2.getText().toString().isEmpty()) {
                         resp2.setBackgroundColor(R.color.rellenaCampo);
 
                         Snackbar.make(view, "Rellena la respuesta 2", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     }
 
-                    if(resp3.getText().toString().isEmpty()){
+                    if (resp3.getText().toString().isEmpty()) {
                         resp3.setBackgroundColor(R.color.rellenaCampo);
 
                         Snackbar.make(view, "Rellena la respuesta 3", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     }
 
-                    if(resp4.getText().toString().isEmpty()){
+                    if (resp4.getText().toString().isEmpty()) {
                         resp4.setBackgroundColor(R.color.rellenaCampo);
 
                         Snackbar.make(view, "Rellena la respuesta 4", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     }
-
 
 
                     view.clearFocus();
@@ -218,7 +218,7 @@ public class AnyadirEditarActivity extends AppCompatActivity {
                 } else {
 
 
-                    if(codigo != -1){
+                    if (codigo != -1) {
                         Pregunta nuevaPregunta = new Pregunta(Integer.toString(codigo), enunciado.getText().toString(), spinner1.getSelectedItem().toString(), resp1.getText().toString(), resp2.getText().toString(), resp3.getText().toString(), resp4.getText().toString());
                         Repositorio.actualizarPreguntaEditada(myContext, codigo, nuevaPregunta);
 
@@ -255,6 +255,42 @@ public class AnyadirEditarActivity extends AppCompatActivity {
             default:
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+    }
+
+    @Override
+    protected void onStart() {
+        MyLog.d(LOGTAG, "Iniciando OnStart...");
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        MyLog.d(LOGTAG, "Iniciando OnResume...");
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        MyLog.d(LOGTAG, "Iniciando OnPause...");
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        MyLog.d(LOGTAG, "Iniciando OnStop...");
+        super.onStop();
+    }
+
+    @Override
+    protected void onRestart() {
+        MyLog.d(LOGTAG, "Iniciando OnRestart...");
+        super.onRestart();
+    }
+
+    @Override
+    protected void onDestroy() {
+        MyLog.d(LOGTAG, "Iniciando OnDestroy...");
+        super.onDestroy();
     }
 
 

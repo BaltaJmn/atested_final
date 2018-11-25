@@ -29,7 +29,7 @@
         android:layout_marginTop="25dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Enunciado"
+        android:text="@string/AnyadirEnunciado"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +41,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Respuesta correcta"
+        android:text="@string/AnyadirRespuestaCorrecta"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
 
@@ -53,7 +53,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Respuesta Incorrecta"
+        android:text="@string/AnyadirRespuestaIncorrecta"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextCorrecta" />
 
@@ -65,7 +65,7 @@
         android:layout_marginTop="9dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Respuesta Incorrecta"
+        android:text="@string/AnyadirRespuestaIncorrecta"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextIncorrecta1" />
 
@@ -77,7 +77,7 @@
         android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Respuesta Incorrecta"
+        android:text="@string/AnyadirRespuestaIncorrecta"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextIncorrecta2" />
 
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="33dp"
         android:layout_marginTop="25dp"
-        android:text="Guardar"
+        android:text="@string/AnyadirGuardar"
         app:layout_constraintStart_toEndOf="@+id/editTextEnunciado"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -99,7 +99,7 @@
         android:layout_marginTop="7dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="381dp"
-        android:text="Button"
+        android:text="@string/AnyadirModCat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/spinnerCategoria"

@@ -12,4 +12,22 @@
     <string name="write_permission_accepted">Write permission acepted</string>
     <string name="write_permission_not_accepted">Write permission not acepted</string>
     <string name="intro">\n</string>
+    <string name="add_new_option">Add new option</string>
+    <string name="your_option">Your option</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirmacionBorrarPregunta">Do you want to delete this question?</string>
+    <string name="delete_pregunta">Delete</string>
+    <string name="AcercaDeTitulo">App developed by Baltasar Jiménez Rincón</string>
+    <string name="AnyadirEnunciado">Statement</string>
+    <string name="AnyadirRespuestaCorrecta">Correct Answer</string>
+    <string name="AnyadirRespuestaIncorrecta">Incorrect Answer</string>
+    <string name="AnyadirGuardar">Save</string>
+    <string name="AnyadirModCat">ModCat</string>
+    <string name="noImplementado">There is no questions in the row</string>
+    <string name="preguntas_disponibles">Avaliable Questions:</string>
+    <string name="categorias_disponibles">Avaliable Categories:</string>
+    <string name="cuestionarios_realizados">"Completed Questionnaires: "</string>
+    <string name="calificaci_n_media">Average Rate:</string>
+    <string name="_0">0</string>
 </resources>

@@ -14,7 +14,7 @@
         android:layout_height="23dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="60dp"
-        android:text="Aun no se han implementado los listados de preguntas"
+        android:text="@string/noImplementado"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
