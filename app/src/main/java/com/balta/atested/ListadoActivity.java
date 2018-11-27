@@ -54,7 +54,7 @@ public class ListadoActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        MyLog.d(LOGTAG, "Iniciando OnResume...");
+        MyLog.d(LOGTAG, Constantes.resume);
         super.onResume();
 
         // Crea una lista con los elementos a mostrar
@@ -202,32 +202,32 @@ public class ListadoActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        MyLog.d(LOGTAG, "Iniciando OnStart...");
+        MyLog.d(LOGTAG, Constantes.start);
         super.onStart();
     }
 
     @Override
-    protected void onRestart() {
-        MyLog.d(LOGTAG, "Iniciando OnRestart...");
-        super.onRestart();
+    protected void onPause() {
+        MyLog.d(LOGTAG, Constantes.pause);
+        super.onPause();
     }
 
     @Override
     protected void onStop() {
-        MyLog.d(LOGTAG, "Iniciando OnStop...");
+        MyLog.d(LOGTAG, Constantes.stop);
         super.onStop();
     }
 
     @Override
-    protected void onDestroy() {
-        MyLog.d(LOGTAG, "Iniciando OnDestroy...");
-        super.onDestroy();
+    protected void onRestart() {
+        MyLog.d(LOGTAG, Constantes.restart);
+        super.onRestart();
     }
 
     @Override
-    protected void onPause() {
-        MyLog.d(LOGTAG, "Iniciando OnPause...");
-        super.onPause();
+    protected void onDestroy() {
+        MyLog.d(LOGTAG, Constantes.destroy);
+        super.onDestroy();
     }
 }
 

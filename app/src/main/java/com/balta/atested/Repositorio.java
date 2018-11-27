@@ -15,7 +15,7 @@ public class Repositorio {
 
         //Abrimos la base de datos 'DBUsuarios' en modo escritura
         BaseDeDatesSQLiteHelper bdsql =
-                new BaseDeDatesSQLiteHelper(contexto, "DBPreguntas", null, 1);
+                new BaseDeDatesSQLiteHelper(contexto, Constantes.nombreDB, null, 1);
 
         SQLiteDatabase db = bdsql.getWritableDatabase();
 
@@ -40,7 +40,7 @@ public class Repositorio {
 
         //Abrimos la base de datos 'DBUsuarios' en modo lectura
         BaseDeDatesSQLiteHelper bdsql =
-                new BaseDeDatesSQLiteHelper(contexto, "DBPreguntas", null, 1);
+                new BaseDeDatesSQLiteHelper(contexto, Constantes.nombreDB, null, 1);
 
         SQLiteDatabase db = bdsql.getReadableDatabase();
 
@@ -64,7 +64,7 @@ public class Repositorio {
 
         //Abrimos la base de datos 'DBUsuarios' en modo lectura
         BaseDeDatesSQLiteHelper bdsql =
-                new BaseDeDatesSQLiteHelper(contexto, "DBPreguntas", null, 1);
+                new BaseDeDatesSQLiteHelper(contexto, Constantes.nombreDB, null, 1);
 
         SQLiteDatabase db = bdsql.getReadableDatabase();
 
@@ -85,7 +85,7 @@ public class Repositorio {
 
         //Abrimos la base de datos 'DBUsuarios' en modo lectura
         BaseDeDatesSQLiteHelper bdsql =
-                new BaseDeDatesSQLiteHelper(contexto, "DBPreguntas", null, 1);
+                new BaseDeDatesSQLiteHelper(contexto, Constantes.nombreDB, null, 1);
 
         SQLiteDatabase db = bdsql.getReadableDatabase();
 
@@ -109,7 +109,7 @@ public class Repositorio {
 
         //Abrimos la base de datos 'DBUsuarios' en modo lectura
         BaseDeDatesSQLiteHelper bdsql =
-                new BaseDeDatesSQLiteHelper(contexto, "DBPreguntas", null, 1);
+                new BaseDeDatesSQLiteHelper(contexto, Constantes.nombreDB, null, 1);
 
         SQLiteDatabase db = bdsql.getReadableDatabase();
 
@@ -121,7 +121,7 @@ public class Repositorio {
 
         //Abrimos la base de datos 'DBUsuarios' en modo lectura
         BaseDeDatesSQLiteHelper bdsql =
-                new BaseDeDatesSQLiteHelper(contexto, "DBPreguntas", null, 1);
+                new BaseDeDatesSQLiteHelper(contexto, Constantes.nombreDB, null, 1);
 
         SQLiteDatabase db = bdsql.getReadableDatabase();
 
@@ -139,7 +139,7 @@ public class Repositorio {
 
         //Abrimos la base de datos 'DBUsuarios' en modo lectura
         BaseDeDatesSQLiteHelper bdsql =
-                new BaseDeDatesSQLiteHelper(contexto, "DBPreguntas", null, 1);
+                new BaseDeDatesSQLiteHelper(contexto, Constantes.nombreDB, null, 1);
 
         SQLiteDatabase db = bdsql.getReadableDatabase();
 
@@ -162,7 +162,7 @@ public class Repositorio {
 
         //Abrimos la base de datos 'DBUsuarios' en modo lectura
         BaseDeDatesSQLiteHelper bdsql =
-                new BaseDeDatesSQLiteHelper(contexto, "DBPreguntas", null, 1);
+                new BaseDeDatesSQLiteHelper(contexto, Constantes.nombreDB, null, 1);
 
         SQLiteDatabase db = bdsql.getReadableDatabase();
 
