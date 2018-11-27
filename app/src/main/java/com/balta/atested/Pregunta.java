@@ -10,6 +10,7 @@ public class Pregunta {
     private String respuestaIncorrecta2;
     private String respuestaIncorrecta3;
 
+    //Constructor de la pregunta
     public Pregunta(String enunciado, String categoria, String respuestaCorrecta, String respuestaIncorrecta1, String respuestaIncorrecta2, String respuestaIncorrecta3) {
         this.enunciado = enunciado;
         this.categoria = categoria;
@@ -19,6 +20,7 @@ public class Pregunta {
         this.respuestaIncorrecta3 = respuestaIncorrecta3;
     }
 
+    //Constructor de la pregunta con codigo
     public Pregunta(String codigo, String enunciado, String categoria, String respuestaCorrecta, String respuestaIncorrecta1, String respuestaIncorrecta2, String respuestaIncorrecta3) {
         this.codigo = Integer.parseInt(codigo);
         this.enunciado = enunciado;
@@ -29,6 +31,7 @@ public class Pregunta {
         this.respuestaIncorrecta3 = respuestaIncorrecta3;
     }
 
+    //Getters y Setters
     public int getCodigo() {
         return codigo;
     }

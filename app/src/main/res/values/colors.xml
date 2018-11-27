@@ -4,4 +4,9 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="rellenaCampo">#FF0000</color>
+    <color name="background">#141519</color>
+    <color name="fondo">#2c2f34</color>
+    <color name="fuente">#ffffff</color>
+    <color name="simbolo">#11c170</color>
+
 </resources>

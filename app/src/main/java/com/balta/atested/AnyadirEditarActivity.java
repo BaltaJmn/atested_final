@@ -110,6 +110,7 @@ public class AnyadirEditarActivity extends AppCompatActivity {
         final EditText resp4 = (EditText) findViewById(R.id.editTextIncorrecta3);
         final Spinner spinner1 = (Spinner) findViewById(R.id.spinnerCategoria);
 
+        //Si de la anterior ventana, nos han pasado un intent al querer editarla, esto coloca cada texto en su lugar
         if (this.getIntent().getExtras() != null) {
             Bundle bundle = this.getIntent().getExtras();
 
@@ -155,6 +156,7 @@ public class AnyadirEditarActivity extends AppCompatActivity {
                             .show();
                 }
 
+                //Comprueba que ninguno está vacío
                 if (enunciado.getText().toString().isEmpty() ||
                         spinner1.getSelectedItem() == null ||
                         resp1.getText().toString().isEmpty() ||
@@ -162,6 +164,7 @@ public class AnyadirEditarActivity extends AppCompatActivity {
                         resp3.getText().toString().isEmpty() ||
                         resp4.getText().toString().isEmpty()) {
 
+                    //Cambia el fondo del campo vacío
                     if (enunciado.getText().toString().isEmpty()) {
                         enunciado.setBackgroundColor(R.color.rellenaCampo);
 
@@ -169,6 +172,7 @@ public class AnyadirEditarActivity extends AppCompatActivity {
                                 .setAction("Action", null).show();
                     }
 
+                    //Cambia el fondo del campo vacío
                     if (spinner1.getSelectedItem() == null) {
                         spinner1.setBackgroundColor(R.color.rellenaCampo);
 
@@ -176,6 +180,7 @@ public class AnyadirEditarActivity extends AppCompatActivity {
                                 .setAction("Action", null).show();
                     }
 
+                    //Cambia el fondo del campo vacío
                     if (resp1.getText().toString().isEmpty()) {
                         resp1.setBackgroundColor(R.color.rellenaCampo);
 
@@ -183,6 +188,7 @@ public class AnyadirEditarActivity extends AppCompatActivity {
                                 .setAction("Action", null).show();
                     }
 
+                    //Cambia el fondo del campo vacío
                     if (resp2.getText().toString().isEmpty()) {
                         resp2.setBackgroundColor(R.color.rellenaCampo);
 
@@ -190,6 +196,7 @@ public class AnyadirEditarActivity extends AppCompatActivity {
                                 .setAction("Action", null).show();
                     }
 
+                    //Cambia el fondo del campo vacío
                     if (resp3.getText().toString().isEmpty()) {
                         resp3.setBackgroundColor(R.color.rellenaCampo);
 
@@ -197,6 +204,7 @@ public class AnyadirEditarActivity extends AppCompatActivity {
                                 .setAction("Action", null).show();
                     }
 
+                    //Cambia el fondo del campo vacío
                     if (resp4.getText().toString().isEmpty()) {
                         resp4.setBackgroundColor(R.color.rellenaCampo);
 
@@ -204,8 +212,8 @@ public class AnyadirEditarActivity extends AppCompatActivity {
                                 .setAction("Action", null).show();
                     }
 
-
                     view.clearFocus();
+
                     if (view != null) {
                         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -218,6 +226,7 @@ public class AnyadirEditarActivity extends AppCompatActivity {
                 } else {
 
 
+                    //Si no es de edición, la crea, sino, la actualiza
                     if (codigo != -1) {
                         Pregunta nuevaPregunta = new Pregunta(Integer.toString(codigo), enunciado.getText().toString(), spinner1.getSelectedItem().toString(), resp1.getText().toString(), resp2.getText().toString(), resp3.getText().toString(), resp4.getText().toString());
                         Repositorio.actualizarPreguntaEditada(myContext, codigo, nuevaPregunta);

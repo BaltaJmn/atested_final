@@ -35,6 +35,7 @@ public class PreguntaAdapter
         public void PreguntaBind(Pregunta pregunta) {
             contador = pregunta.getEnunciado().length();
 
+            //Trunca el enunciado de la pregunta
             if (contador > 20) {
                 TextView_enunciado.setText(pregunta.getEnunciado().substring(0, 10) + "...");
             } else {

@@ -7,17 +7,17 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".AnyadirEditarActivity"
-    tools:showIn="@layout/activity_anyadir">
+    tools:showIn="@layout/activity_anyadir"
+    android:background="@color/fondo">
 
     <Spinner
         android:id="@+id/spinnerCategoria"
-        android:layout_width="291dp"
-        android:layout_height="22dp"
+        android:layout_width="180dp"
+        android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:background="@color/fondo"
+        android:textColor="@color/fuente"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEnunciado" />
 
@@ -28,10 +28,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="25dp"
         android:ems="10"
+        android:hint="Enunciado"
         android:inputType="textPersonName"
-        android:text="@string/AnyadirEnunciado"
+        android:textColor="@color/fuente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/fondo"/>
 
     <EditText
         android:id="@+id/editTextCorrecta"
@@ -40,10 +42,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="Respuesta Correcta"
         android:inputType="textPersonName"
-        android:text="@string/AnyadirRespuestaCorrecta"
+        android:textColor="@color/fuente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria"
+        android:background="@color/fondo"/>
 
     <EditText
         android:id="@+id/editTextIncorrecta1"
@@ -52,10 +56,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:hint="Respuesta Incorrecta"
         android:inputType="textPersonName"
-        android:text="@string/AnyadirRespuestaIncorrecta"
+        android:textColor="@color/fuente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCorrecta" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextCorrecta"
+        android:background="@color/fondo"/>
 
     <EditText
         android:id="@+id/editTextIncorrecta2"
@@ -64,10 +70,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="9dp"
         android:ems="10"
+        android:hint="Respuesta Incorrecta"
         android:inputType="textPersonName"
-        android:text="@string/AnyadirRespuestaIncorrecta"
+        android:textColor="@color/fuente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextIncorrecta1" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextIncorrecta1"
+        android:background="@color/fondo"/>
 
     <EditText
         android:id="@+id/editTextIncorrecta3"
@@ -76,33 +84,34 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
         android:ems="10"
+        android:hint="Respuesta Incorrecta"
         android:inputType="textPersonName"
-        android:text="@string/AnyadirRespuestaIncorrecta"
+        android:textColor="@color/fuente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextIncorrecta2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextIncorrecta2"
+        android:background="@color/fondo"/>
 
     <Button
         android:id="@+id/buttonGuardar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/simbolo"
         android:text="@string/AnyadirGuardar"
-        app:layout_constraintStart_toEndOf="@+id/editTextEnunciado"
+        android:textColor="@color/background"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="52dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="381dp"
+        android:layout_width="74dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/simbolo"
         android:text="@string/AnyadirModCat"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/background"
         app:layout_constraintStart_toEndOf="@+id/spinnerCategoria"
-        app:layout_constraintTop_toBottomOf="@+id/buttonGuardar"
-        app:layout_constraintVertical_bias="0.49" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextEnunciado" />
 </android.support.constraint.ConstraintLayout>

@@ -16,6 +16,7 @@ public class LogoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logo);
 
+        //Temporizador de 5 segundos
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {

@@ -20,9 +20,9 @@
     <string name="AcercaDeTitulo">Aplicación desarrollada por Baltasar Jiménez Rincón</string>
     <string name="AnyadirEnunciado">Enunciado</string>
     <string name="AnyadirRespuestaCorrecta">Respuesta correcta</string>
-    <string name="AnyadirRespuestaIncorrecta">Respuesta Incorrecta</string>
-    <string name="AnyadirRespuestaIncorrecta">Respuesta Incorrecta</string>
-    <string name="AnyadirRespuestaIncorrecta">Respuesta Incorrecta</string>
+    <string name="AnyadirRespuestaIncorrecta1">Respuesta Incorrecta</string>
+    <string name="AnyadirRespuestaIncorrecta2">Respuesta Incorrecta</string>
+    <string name="AnyadirRespuestaIncorrecta3">Respuesta Incorrecta</string>
     <string name="AnyadirGuardar">Guardar</string>
     <string name="AnyadirModCat">ModCat</string>
     <string name="noImplementado">No hay ninguna pregunta en el listado</string>
@@ -31,8 +31,8 @@
     <string name="cuestionarios_realizados">Cuestionarios Realizados:</string>
     <string name="calificaci_n_media">Calificación Media:</string>
     <string name="_0">0</string>
-    <string name="_0">0</string>
-    <string name="_0">0</string>
-    <string name="_0">0</string>
+    <string name="AnyadirRespuestaIncorrecta">Respuesta Incorrecta</string>
+    <string name="twitter">Twitter: @BaltaJmn</string>
+    <string name="instagram">Instagram: @baltajmn75</string>
 
 </resources>

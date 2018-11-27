@@ -42,6 +42,7 @@ public class ListadoActivity extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
 
+            //Abre la actividad siguiente al clickar
             @Override
             public void onClick(View v) {
                 Intent listadoIntent = new Intent(ListadoActivity.this, AnyadirEditarActivity.class);
@@ -112,6 +113,9 @@ public class ListadoActivity extends AppCompatActivity {
                                         new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialogBox, int id) {
                                                 dialogBox.cancel();
+                                                restart = getIntent();
+                                                finish();
+                                                startActivity(restart);
                                             }
                                         })
                                 .create()
