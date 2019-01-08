@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".AnyadirEditarActivity"
-    tools:showIn="@layout/activity_anyadir"
-    android:background="@color/fondo">
+    tools:showIn="@layout/activity_anyadir">
 
     <Spinner
         android:id="@+id/spinnerCategoria"
@@ -16,8 +15,6 @@
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:background="@color/fondo"
-        android:textColor="@color/fuente"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEnunciado" />
 
@@ -30,10 +27,8 @@
         android:ems="10"
         android:hint="Enunciado"
         android:inputType="textPersonName"
-        android:textColor="@color/fuente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/fondo"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
         android:id="@+id/editTextCorrecta"
@@ -44,10 +39,8 @@
         android:ems="10"
         android:hint="Respuesta Correcta"
         android:inputType="textPersonName"
-        android:textColor="@color/fuente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria"
-        android:background="@color/fondo"/>
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria"/>
 
     <EditText
         android:id="@+id/editTextIncorrecta1"
@@ -58,10 +51,8 @@
         android:ems="10"
         android:hint="Respuesta Incorrecta"
         android:inputType="textPersonName"
-        android:textColor="@color/fuente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCorrecta"
-        android:background="@color/fondo"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextCorrecta"/>
 
     <EditText
         android:id="@+id/editTextIncorrecta2"
@@ -72,10 +63,8 @@
         android:ems="10"
         android:hint="Respuesta Incorrecta"
         android:inputType="textPersonName"
-        android:textColor="@color/fuente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextIncorrecta1"
-        android:background="@color/fondo"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextIncorrecta1"/>
 
     <EditText
         android:id="@+id/editTextIncorrecta3"
@@ -86,10 +75,8 @@
         android:ems="10"
         android:hint="Respuesta Incorrecta"
         android:inputType="textPersonName"
-        android:textColor="@color/fuente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextIncorrecta2"
-        android:background="@color/fondo"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextIncorrecta2"/>
 
     <Button
         android:id="@+id/buttonGuardar"
@@ -97,9 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@color/simbolo"
         android:text="@string/AnyadirGuardar"
-        android:textColor="@color/background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -109,9 +94,7 @@
         android:layout_height="31dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:background="@color/simbolo"
         android:text="@string/AnyadirModCat"
-        android:textColor="@color/background"
         app:layout_constraintStart_toEndOf="@+id/spinnerCategoria"
         app:layout_constraintTop_toBottomOf="@+id/editTextEnunciado" />
 </android.support.constraint.ConstraintLayout>

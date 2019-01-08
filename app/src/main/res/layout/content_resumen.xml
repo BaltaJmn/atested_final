@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ResumenActivity"
-    tools:showIn="@layout/activity_resumen"
-    android:background="@color/fondo">
+    tools:showIn="@layout/activity_resumen">
 
 
     <LinearLayout
@@ -28,7 +27,6 @@
                 android:layout_marginTop="59dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/preguntas_disponibles"
-                android:textColor="@color/fuente"
                 app:layout_constraintBottom_toTopOf="@+id/enunciado2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -41,7 +39,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/categorias_disponibles"
-                android:textColor="@color/fuente"
                 app:layout_constraintBottom_toTopOf="@+id/enunciado3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/enunciado1" />
@@ -54,7 +51,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/cuestionarios_realizados"
-                android:textColor="@color/fuente"
                 app:layout_constraintBottom_toTopOf="@+id/enunciado4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/enunciado2" />
@@ -67,7 +63,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="348dp"
                 android:text="@string/calificaci_n_media"
-                android:textColor="@color/fuente"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/enunciado3" />
@@ -92,7 +87,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/_0"
-                android:textColor="@color/fuente"
                 tools:layout_editor_absoluteX="323dp"
                 tools:layout_editor_absoluteY="59dp" />
 
@@ -105,7 +99,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/_0"
-                android:textColor="@color/fuente"
                 tools:layout_editor_absoluteX="323dp"
                 tools:layout_editor_absoluteY="79dp" />
 
@@ -118,7 +111,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/_0"
-                android:textColor="@color/fuente"
                 tools:layout_editor_absoluteX="323dp"
                 tools:layout_editor_absoluteY="105dp" />
 
@@ -131,7 +123,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/_0"
-                android:textColor="@color/fuente"
                 tools:layout_editor_absoluteX="323dp"
                 tools:layout_editor_absoluteY="132dp" />
 

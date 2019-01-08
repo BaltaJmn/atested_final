@@ -30,4 +30,7 @@
     <string name="cuestionarios_realizados">"Completed Questionnaires: "</string>
     <string name="calificaci_n_media">Average Rate:</string>
     <string name="_0">0</string>
+    <string name="AnyadirRespuestaIncorrecta1">Wrong Answer 1</string>
+    <string name="AnyadirRespuestaIncorrecta2">Wrong Answer 2</string>
+    <string name="AnyadirRespuestaIncorrecta3">Wrong Answer 3</string>
 </resources>

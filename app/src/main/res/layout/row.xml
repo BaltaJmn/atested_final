@@ -16,23 +16,20 @@ android:paddingTop="@dimen/activity_vertical_margin">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
-        android:background="@color/fondo">
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/TextView_enunciado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:textSize="26sp"
-            android:textColor="@color/fuente"/>
+            android:textSize="26sp"/>
 
         <TextView
             android:id="@+id/TextView_categoria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/TextView_enunciado"
-            android:textColor="@color/fuente"/>
+            android:layout_below="@+id/TextView_enunciado"/>
 
     </RelativeLayout>
 

@@ -13,6 +13,4 @@
         android:text="@string/confirmacionBorrarPregunta"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-
-
 </LinearLayout>
