@@ -23,8 +23,8 @@ public class Repositorio {
         if (db != null) {
 
             //Insertamos los datos en la tabla Usuarios
-            db.execSQL("INSERT INTO Pregunta (enunciado, categoria, respuestaCorrecta, respuestaIncorrecta1 , respuestaIncorrecta2 , respuestaIncorrecta3 ) " +
-                    "VALUES ('" + p.getEnunciado() + "', '" + p.getCategoria() + "', '" + p.getRespuestaCorrecta() + "', '" + p.getRespuestaIncorrecta1() + "', '" + p.getRespuestaIncorrecta2() + "', '" + p.getRespuestaIncorrecta3() + "')");
+            db.execSQL("INSERT INTO Pregunta (enunciado, categoria, respuestaCorrecta, respuestaIncorrecta1 , respuestaIncorrecta2 , respuestaIncorrecta3, imagen ) " +
+                    "VALUES ('" + p.getEnunciado() + "', '" + p.getCategoria() + "', '" + p.getRespuestaCorrecta() + "', '" + p.getRespuestaIncorrecta1() + "', '" + p.getRespuestaIncorrecta2() + "', '" + p.getRespuestaIncorrecta3() + "', '" + p.getImagen() +"')");
 
             //Cerramos la base de datos
             db.close();
@@ -51,7 +51,7 @@ public class Repositorio {
         if (c.moveToFirst()) {
             //Recorremos el cursor hasta que no haya más registros
             do {
-                ArrayListPregunta.add(new Pregunta(c.getString(c.getColumnIndex("codigo")), c.getString(c.getColumnIndex("enunciado")), c.getString(c.getColumnIndex("categoria")), c.getString(c.getColumnIndex("respuestaCorrecta")), c.getString(c.getColumnIndex("respuestaIncorrecta1")), c.getString(c.getColumnIndex("respuestaIncorrecta2")), c.getString(c.getColumnIndex("respuestaIncorrecta3"))));
+                ArrayListPregunta.add(new Pregunta(c.getString(c.getColumnIndex("codigo")), c.getString(c.getColumnIndex("enunciado")), c.getString(c.getColumnIndex("categoria")), c.getString(c.getColumnIndex("respuestaCorrecta")), c.getString(c.getColumnIndex("respuestaIncorrecta1")), c.getString(c.getColumnIndex("respuestaIncorrecta2")), c.getString(c.getColumnIndex("respuestaIncorrecta3")), c.getString(c.getColumnIndex("imagen"))));
             } while (c.moveToNext());
         }
 
@@ -70,10 +70,10 @@ public class Repositorio {
 
         Cursor c = db.rawQuery(" SELECT * FROM Pregunta WHERE codigo = " + codigo, null);
 
-        Pregunta preguntaSelec = new Pregunta(null, null, null, null, null, null);
+        Pregunta preguntaSelec = new Pregunta(null, null, null, null, null, null, null);
 
         if (c.moveToFirst()) {
-            preguntaSelec = new Pregunta(c.getString(c.getColumnIndex("codigo")), c.getString(c.getColumnIndex("enunciado")), c.getString(c.getColumnIndex("categoria")), c.getString(c.getColumnIndex("respuestaCorrecta")), c.getString(c.getColumnIndex("respuestaIncorrecta1")), c.getString(c.getColumnIndex("respuestaIncorrecta2")), c.getString(c.getColumnIndex("respuestaIncorrecta3")));
+            preguntaSelec = new Pregunta(c.getString(c.getColumnIndex("codigo")), c.getString(c.getColumnIndex("enunciado")), c.getString(c.getColumnIndex("categoria")), c.getString(c.getColumnIndex("respuestaCorrecta")), c.getString(c.getColumnIndex("respuestaIncorrecta1")), c.getString(c.getColumnIndex("respuestaIncorrecta2")), c.getString(c.getColumnIndex("respuestaIncorrecta3")), c.getString(c.getColumnIndex("imagen")));
         }
 
         db.close();
@@ -131,7 +131,8 @@ public class Repositorio {
                 "respuestaCorrecta = '" + p.getRespuestaCorrecta() + "' , " +
                 "respuestaIncorrecta1 = '" + p.getRespuestaIncorrecta1() + "' , " +
                 "respuestaIncorrecta2 = '" + p.getRespuestaIncorrecta2() + "' , " +
-                "respuestaIncorrecta3 = '" + p.getRespuestaIncorrecta3() + "' WHERE codigo = " + codigo);
+                "respuestaIncorrecta3 = '" + p.getRespuestaIncorrecta3() + "' , " +
+                "imagen = '" + p.getImagen() + "' WHERE codigo = " + codigo);
     }
 
     public static String contarCategoria(Context contexto) {

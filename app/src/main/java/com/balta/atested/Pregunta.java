@@ -9,19 +9,21 @@ public class Pregunta {
     private String respuestaIncorrecta1;
     private String respuestaIncorrecta2;
     private String respuestaIncorrecta3;
+    private String imagen;
 
     //Constructor de la pregunta
-    public Pregunta(String enunciado, String categoria, String respuestaCorrecta, String respuestaIncorrecta1, String respuestaIncorrecta2, String respuestaIncorrecta3) {
+    public Pregunta(String enunciado, String categoria, String respuestaCorrecta, String respuestaIncorrecta1, String respuestaIncorrecta2, String respuestaIncorrecta3, String imagen) {
         this.enunciado = enunciado;
         this.categoria = categoria;
         this.respuestaCorrecta = respuestaCorrecta;
         this.respuestaIncorrecta1 = respuestaIncorrecta1;
         this.respuestaIncorrecta2 = respuestaIncorrecta2;
         this.respuestaIncorrecta3 = respuestaIncorrecta3;
+        this.imagen = imagen;
     }
 
     //Constructor de la pregunta con codigo
-    public Pregunta(String codigo, String enunciado, String categoria, String respuestaCorrecta, String respuestaIncorrecta1, String respuestaIncorrecta2, String respuestaIncorrecta3) {
+    public Pregunta(String codigo, String enunciado, String categoria, String respuestaCorrecta, String respuestaIncorrecta1, String respuestaIncorrecta2, String respuestaIncorrecta3, String imagen) {
         this.codigo = Integer.parseInt(codigo);
         this.enunciado = enunciado;
         this.categoria = categoria;
@@ -29,6 +31,7 @@ public class Pregunta {
         this.respuestaIncorrecta1 = respuestaIncorrecta1;
         this.respuestaIncorrecta2 = respuestaIncorrecta2;
         this.respuestaIncorrecta3 = respuestaIncorrecta3;
+        this.imagen = imagen;
     }
 
     //Getters y Setters
@@ -86,6 +89,14 @@ public class Pregunta {
 
     public void setRespuestaIncorrecta3(String respuestaIncorrecta3) {
         this.respuestaIncorrecta3 = respuestaIncorrecta3;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }
 

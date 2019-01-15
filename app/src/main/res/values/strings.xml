@@ -34,5 +34,10 @@
     <string name="AnyadirRespuestaIncorrecta">Respuesta Incorrecta</string>
     <string name="twitter" translatable="false">Twitter: @BaltaJmn</string>
     <string name="instagram" translatable="false">Instagram: @baltajmn75</string>
+    <string name="strTomaFoto">Tomar Foto</string>
+    <string name="from_gallery">Desde Galería</string>
+    <string name="from_camera">Desde Cámara</string>
+    <string name="error_files">No se ha podido hacer algo</string>
+    <string name="choose_picture">Elegir Imagen</string>
 
 </resources>
