@@ -39,5 +39,6 @@
     <string name="from_camera">Desde Cámara</string>
     <string name="error_files">No se ha podido hacer algo</string>
     <string name="choose_picture">Elegir Imagen</string>
+    <string name="delete">Borrar</string>
 
 </resources>

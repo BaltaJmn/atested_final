@@ -70,10 +70,10 @@ public class ListadoActivity extends AppCompatActivity {
             // Inicializa el RecyclerView
             final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
-            ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
+            ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
 
                 @Override
-                public boolean onMove(RecyclerView recyclerView,RecyclerView.ViewHolder viewHolder,RecyclerView.ViewHolder target){
+                public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
                     return false;
                 }
 
@@ -81,7 +81,7 @@ public class ListadoActivity extends AppCompatActivity {
                 public void onSwiped(final RecyclerView.ViewHolder viewHolder, int direction) {
                     final int position = viewHolder.getAdapterPosition();
 
-                    if(direction == ItemTouchHelper.LEFT){
+                    if (direction == ItemTouchHelper.LEFT) {
                         // Recuperación de la vista del AlertDialog a partir del layout de la Actividad
                         LayoutInflater layoutActivity = LayoutInflater.from(myContext);
                         View viewAlertDialog = layoutActivity.inflate(R.layout.alert_dialog_borrar_pregunta, null);
@@ -123,7 +123,7 @@ public class ListadoActivity extends AppCompatActivity {
 
                     }
 
-                    if(direction == ItemTouchHelper.RIGHT){
+                    if (direction == ItemTouchHelper.RIGHT) {
                         // Recuperación de la vista del AlertDialog a partir del layout de la Actividad
                         LayoutInflater layoutActivity = LayoutInflater.from(myContext);
                         View viewAlertDialog = layoutActivity.inflate(R.layout.alert_dialog_borrar_pregunta, null);
@@ -155,6 +155,9 @@ public class ListadoActivity extends AppCompatActivity {
                                         new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialogBox, int id) {
                                                 dialogBox.cancel();
+                                                restart = getIntent();
+                                                finish();
+                                                startActivity(restart);
                                             }
                                         })
                                 .create()
@@ -167,8 +170,6 @@ public class ListadoActivity extends AppCompatActivity {
             itemTouchHelper.attachToRecyclerView(recyclerView);
 
 
-
-
             // Crea el Adaptador con los datos de la lista anterior
             PreguntaAdapter adaptador = new PreguntaAdapter(preguntas);
 
@@ -179,7 +180,7 @@ public class ListadoActivity extends AppCompatActivity {
                     // Acción al pulsar el elemento
                     int position = recyclerView.getChildAdapterPosition(v);
 
-                    Intent editarpregunta= new Intent(ListadoActivity.this, AnyadirEditarActivity.class);
+                    Intent editarpregunta = new Intent(ListadoActivity.this, AnyadirEditarActivity.class);
 
                     //Creamos la información a pasar entre actividades
                     b.putInt("codigo", preguntas.get(position).getCodigo());

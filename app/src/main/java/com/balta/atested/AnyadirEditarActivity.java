@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -63,6 +64,7 @@ public class AnyadirEditarActivity extends AppCompatActivity {
     private static final int REQUEST_SELECT_IMAGE = 201;
     final String pathFotos = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/demoAndroidImages/";
     private Uri uri;
+    private Bitmap bitmap = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,6 +137,7 @@ public class AnyadirEditarActivity extends AppCompatActivity {
         final EditText resp3 = (EditText) findViewById(R.id.editTextIncorrecta2);
         final EditText resp4 = (EditText) findViewById(R.id.editTextIncorrecta3);
         final Spinner spinner1 = (Spinner) findViewById(R.id.spinnerCategoria);
+        final ImageView imageViewPregunta = (ImageView) findViewById(R.id.imageView);
 
         //Si de la anterior ventana, nos han pasado un intent al querer editarla, esto coloca cada texto en su lugar
         if (this.getIntent().getExtras() != null) {
@@ -148,6 +151,8 @@ public class AnyadirEditarActivity extends AppCompatActivity {
             resp2.setText(p.getRespuestaIncorrecta1());
             resp3.setText(p.getRespuestaIncorrecta2());
             resp4.setText(p.getRespuestaIncorrecta3());
+            imageViewPregunta.setImageBitmap(PreguntaAdapter.ConversorBase64aImagen(p.getImagen()));
+
 
             //Repositorio.actualizarPreguntaEditada(myContext, codigo, p);
             //Repositorio.borrarPreguntaEditada(myContext, codigo);
@@ -233,14 +238,20 @@ public class AnyadirEditarActivity extends AppCompatActivity {
 
                     //Si no es de edición, la crea, sino, la actualiza
                     if (codigo != -1) {
-                        Pregunta nuevaPregunta = new Pregunta(Integer.toString(codigo), enunciado.getText().toString(), spinner1.getSelectedItem().toString(), resp1.getText().toString(), resp2.getText().toString(), resp3.getText().toString(), resp4.getText().toString());
+
+                        //Bitmap
+
+                        ImageView imageView = findViewById(R.id.imageView);
+                        BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
+                        bitmap = drawable.getBitmap();
+
+                        Pregunta nuevaPregunta = new Pregunta(Integer.toString(codigo), enunciado.getText().toString(), spinner1.getSelectedItem().toString(), resp1.getText().toString(), resp2.getText().toString(), resp3.getText().toString(), resp4.getText().toString(), camaraImagen64(bitmap));
                         Repositorio.actualizarPreguntaEditada(myContext, codigo, nuevaPregunta);
 
                     } else {
 
 
-
-                        Pregunta nuevaPregunta = new Pregunta(enunciado.getText().toString(), spinner1.getSelectedItem().toString(), resp1.getText().toString(), resp2.getText().toString(), resp3.getText().toString(), resp4.getText().toString(), camaraImagen64(uri));
+                        Pregunta nuevaPregunta = new Pregunta(enunciado.getText().toString(), spinner1.getSelectedItem().toString(), resp1.getText().toString(), resp2.getText().toString(), resp3.getText().toString(), resp4.getText().toString(), camaraImagen64(bitmap));
                         Repositorio.insertar(nuevaPregunta, myContext);
                     }
 
@@ -318,6 +329,15 @@ public class AnyadirEditarActivity extends AppCompatActivity {
         });
         //====== codigo importar imágenes:end ======
 
+        Button buttonEliminar = (Button) findViewById(R.id.buttonEliminar);
+        buttonEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageViewPregunta.setImageDrawable(null);
+            }
+        });
+
+
     }
 
     private void takePicture() {
@@ -385,6 +405,10 @@ public class AnyadirEditarActivity extends AppCompatActivity {
                     imageView.setImageURI(uri);
                     imageView.setRotation(90);
 
+                    //Bitmap
+                    BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
+                    bitmap = drawable.getBitmap();
+
                     // Se le envía un broadcast a la Galería para que se actualice
                     Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                     mediaScanIntent.setData(uri);
@@ -417,6 +441,10 @@ public class AnyadirEditarActivity extends AppCompatActivity {
                         // Se carga el Bitmap en el ImageView
                         ImageView imageView = findViewById(R.id.imageView);
                         imageView.setImageBitmap(bmp);
+
+                        //Bitmap
+                        BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
+                        bitmap = drawable.getBitmap();
                     }
                 }
                 break;
@@ -460,21 +488,34 @@ public class AnyadirEditarActivity extends AppCompatActivity {
         }
     }
 
-    public static String camaraImagen64(Uri uri){
+    public static String camaraImagen64(Bitmap bm) {
 
-        String encodedImage="";
+        String encodedImage = "";
 
-        if(uri == null){
+        if (bm == null) {
             return encodedImage;
-        }else{
-            Bitmap bm = BitmapFactory.decodeFile(uri.getPath());
-            Bitmap resized=Bitmap.createScaledBitmap(bm,200,200,true);
-            ByteArrayOutputStream baos=new ByteArrayOutputStream();
-            resized.compress(Bitmap.CompressFormat.JPEG,100,baos);
-            byte[]b=baos.toByteArray();
-            encodedImage=Base64.encodeToString(b,Base64.DEFAULT);
+        } else {
+            Bitmap resized = Bitmap.createScaledBitmap(bm, 200, 200, true);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            resized.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] b = baos.toByteArray();
+            encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
             return encodedImage;
         }
+    }
+
+    public static String galeriaImagen64(Bitmap bm) {
+        String encodedImage = null;
+        if (bm != null) {
+            Bitmap resized = Bitmap.createScaledBitmap(bm, 200, 200, true);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            resized.compress(Bitmap.CompressFormat.JPEG, 100, baos);//bmisthebitmapobject
+            byte[] b = baos.toByteArray();
+            encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
+        } else {
+            return "";
+        }
+        return encodedImage;
     }
 
     @Override

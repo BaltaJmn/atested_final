@@ -1,10 +1,15 @@
 package com.balta.atested;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -24,12 +29,14 @@ public class PreguntaAdapter
 
         private TextView TextView_enunciado;
         private TextView TextView_categoria;
+        private ImageView ImageViewListado;
         private int contador;
 
         public PreguntaViewHolder(View itemView) {
             super(itemView);
             TextView_enunciado = (TextView) itemView.findViewById(R.id.TextView_enunciado);
             TextView_categoria = (TextView) itemView.findViewById(R.id.TextView_categoria);
+            ImageViewListado = (ImageView) itemView.findViewById(R.id.imageViewListado);
         }
 
         public void PreguntaBind(Pregunta pregunta) {
@@ -44,7 +51,14 @@ public class PreguntaAdapter
 
 
             TextView_categoria.setText(pregunta.getCategoria());
+            ImageViewListado.setImageBitmap(ConversorBase64aImagen(pregunta.getImagen()));
         }
+    }
+
+    public static Bitmap ConversorBase64aImagen(String CodigoImagen){
+        byte[] decodedString = Base64.decode(CodigoImagen, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return decodedByte;
     }
 
     // Contruye el objeto adaptador recibiendo la lista de datos

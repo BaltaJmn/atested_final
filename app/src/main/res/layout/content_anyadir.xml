@@ -125,8 +125,19 @@
         android:layout_marginStart="60dp"
         android:layout_marginBottom="52dp"
         android:src="@drawable/icon_image"
+        android:background="@drawable/icon_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonEliminar"
+        android:layout_width="214dp"
+        android:layout_height="38dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="14dp"
+        android:text="@string/delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
