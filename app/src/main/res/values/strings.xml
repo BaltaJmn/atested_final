@@ -40,5 +40,7 @@
     <string name="error_files">No se ha podido hacer algo</string>
     <string name="choose_picture">Elegir Imagen</string>
     <string name="delete">Borrar</string>
+    <string name="action_importar">Importar</string>
+    <string name="action_exportar">Exportar</string>
 
 </resources>

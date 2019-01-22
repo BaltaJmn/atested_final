@@ -3,19 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.balta.atested.ResumenActivity">
 
-    <item android:id="@+id/action_listado"
-        android:title="@string/action_listado"
+    <item
+        android:id="@+id/action_listado"
         android:orderInCategory="100"
+        android:title="@string/action_listado"
         app:showAsAction="never" />
 
-    <item android:id="@+id/action_configuracion"
-        android:title="@string/action_configuracion"
+    <item
+        android:id="@+id/action_configuracion"
         android:orderInCategory="100"
+        android:title="@string/action_configuracion"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_importar"
+        android:orderInCategory="100"
+        android:title="@string/action_importar"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_exportar"
+        android:orderInCategory="100"
+        android:title="@string/action_exportar"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_acercade"
-        android:title="@string/action_acercade"
         android:orderInCategory="100"
+        android:title="@string/action_acercade"
         app:showAsAction="never" />
+
+
 </menu>
