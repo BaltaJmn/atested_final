@@ -1,9 +1,19 @@
 package com.balta.atested;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
+import android.os.Environment;
+import android.util.Xml;
 
+import org.xmlpull.v1.XmlSerializer;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.StringWriter;
 import java.util.ArrayList;
 
 public class Repositorio {
@@ -24,7 +34,7 @@ public class Repositorio {
 
             //Insertamos los datos en la tabla Usuarios
             db.execSQL("INSERT INTO Pregunta (enunciado, categoria, respuestaCorrecta, respuestaIncorrecta1 , respuestaIncorrecta2 , respuestaIncorrecta3, imagen ) " +
-                    "VALUES ('" + p.getEnunciado() + "', '" + p.getCategoria() + "', '" + p.getRespuestaCorrecta() + "', '" + p.getRespuestaIncorrecta1() + "', '" + p.getRespuestaIncorrecta2() + "', '" + p.getRespuestaIncorrecta3() + "', '" + p.getImagen() +"')");
+                    "VALUES ('" + p.getEnunciado() + "', '" + p.getCategoria() + "', '" + p.getRespuestaCorrecta() + "', '" + p.getRespuestaIncorrecta1() + "', '" + p.getRespuestaIncorrecta2() + "', '" + p.getRespuestaIncorrecta3() + "', '" + p.getImagen() + "')");
 
             //Cerramos la base de datos
             db.close();
@@ -179,5 +189,99 @@ public class Repositorio {
         db.close();
 
         return Integer.toString(contador);
+    }
+
+    public static String CreateXMLString(Context contexto) throws IllegalArgumentException, IllegalStateException, IOException
+    {
+        ArrayList<Pregunta> ListaPreguntas = new ArrayList<Pregunta>();
+        ListaPreguntas= Repositorio.recuperarDatos(contexto);
+
+
+        XmlSerializer xmlSerializer = Xml.newSerializer();
+        StringWriter writer = new StringWriter();
+
+        xmlSerializer.setOutput(writer);
+
+        //Start Document
+        xmlSerializer.startDocument("UTF-8", true);
+        xmlSerializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
+
+
+
+
+        //Open Tag <file>
+        xmlSerializer.startTag("", "quiz");
+
+        for (Pregunta p: ListaPreguntas) {
+            //Categoria de cada pregunta
+
+            xmlSerializer.startTag("", "question");
+            xmlSerializer.attribute("", "type", p.getCategoria());
+
+            xmlSerializer.startTag("", "category");
+            xmlSerializer.text(p.getCategoria());
+            xmlSerializer.endTag("", "category");
+
+            xmlSerializer.endTag("", "question");
+
+            //Pregunta de eleccion multiple
+
+            xmlSerializer.startTag("", "question");
+            xmlSerializer.attribute("", "type", "multichoice");
+
+            xmlSerializer.startTag("", "name");
+            xmlSerializer.text(p.getEnunciado());
+            xmlSerializer.endTag("", "name");
+
+            xmlSerializer.startTag("","questiontext");
+            xmlSerializer.attribute("", "format", "html");
+            xmlSerializer.text(p.getEnunciado());
+            xmlSerializer.startTag("","file");
+            xmlSerializer.attribute("", "name", "imagen_pregunta.jpg");
+            xmlSerializer.attribute("", "path", "/");
+            xmlSerializer.attribute("", "encoding", "base64");
+            xmlSerializer.endTag("", "file");
+            xmlSerializer.endTag("", "questiontext");
+
+            xmlSerializer.startTag("","answernumbering");
+            xmlSerializer.endTag("", "answernumbering");
+
+            xmlSerializer.startTag("","answer");
+            xmlSerializer.attribute("","fraction", "100");
+            xmlSerializer.attribute("", "format", "html");
+            xmlSerializer.text(p.getRespuestaCorrecta());
+            xmlSerializer.endTag("", "answer");
+
+            xmlSerializer.startTag("","answer");
+            xmlSerializer.attribute("","fraction", "0");
+            xmlSerializer.attribute("", "format", "html");
+            xmlSerializer.text(p.getRespuestaIncorrecta1());
+            xmlSerializer.endTag("", "answer");
+
+            xmlSerializer.startTag("","answer");
+            xmlSerializer.attribute("","fraction", "0");
+            xmlSerializer.attribute("", "format", "html");
+            xmlSerializer.text(p.getRespuestaIncorrecta2());
+            xmlSerializer.endTag("", "answer");
+
+            xmlSerializer.startTag("","answer");
+            xmlSerializer.attribute("","fraction", "0");
+            xmlSerializer.attribute("", "format", "html");
+            xmlSerializer.text(p.getRespuestaIncorrecta3());
+            xmlSerializer.endTag("", "answer");
+
+            xmlSerializer.endTag("","question");
+        }
+
+        //end tag <file>
+        xmlSerializer.endTag("","quiz");
+
+
+
+        xmlSerializer.endDocument();
+
+        return writer.toString();
+
+
     }
 }
