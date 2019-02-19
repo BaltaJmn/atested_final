@@ -240,56 +240,41 @@ public class ResumenActivity extends AppCompatActivity {
                                 if (tag.equals("question")) {
                                     enterQuestion = true;
                                 }
-
-                                if (tag.equals("file")) {
-                                    imagen = parser.getAttributeValue(null, "name");
-                                    //Mientras se arregla lo de la imagen la guardo como cadena vacia
-                                    //imagen= "";
-                                    System.out.println("Imagen: " + imagen);
-
-                                }
                                 break;
 
                             case XmlPullParser.TEXT:
-                                if (tag.equals("category")) {
-                                    categoria = parser.getText();
-                                    System.out.println("Categoria: " + categoria);
-
-                                }
-                                if (tag.equals("name")) {
-                                    enunciado = parser.getText();
-                                    System.out.println("Enunciado: " + enunciado);
-
-                                }
-                                /*
-                                if(tag.equals("file"))
-                                {
-                                    imagen= parser.getAttributeValue(null,"encoding");
-                                    //Mientras se arregla lo de la imagen la guardo como cadena vacia
-                                    imagen= "";
-                                    System.out.println("Imagen: "+ imagen);
-
-                                }
-                                */
-                                if (tag.equals("answer")) {
-                                    //System.out.println("CONTADOR: "+ contadorRespuestas);
+                                if (tag.equals("text")) {
 
                                     if (contadorRespuestas == 0) {
+                                        categoria = parser.getText();
+                                        System.out.println("categoria: " + categoria);
+                                        contadorRespuestas++;
+
+                                    } else if (contadorRespuestas == 1) {
+                                        enunciado = parser.getText();
+                                        System.out.println("Enunciado: " + enunciado);
+                                        contadorRespuestas++;
+
+                                    } else if (contadorRespuestas == 2) {
+                                        System.out.println("Informacion de la pregunta: ");
+                                        contadorRespuestas++;
+
+                                    } else if (contadorRespuestas == 3) {
                                         respuestacorrecta = parser.getText();
                                         System.out.println("Correcta: " + respuestacorrecta);
                                         contadorRespuestas++;
 
-                                    } else if (contadorRespuestas == 1) {
+                                    } else if (contadorRespuestas == 4) {
                                         respuestaincorrecta1 = parser.getText();
                                         System.out.println("Incorrecta1: " + respuestaincorrecta1);
                                         contadorRespuestas++;
 
-                                    } else if (contadorRespuestas == 2) {
+                                    } else if (contadorRespuestas == 5) {
                                         respuestaincorrecta2 = parser.getText();
                                         System.out.println("Incorrecta2: " + respuestaincorrecta2);
                                         contadorRespuestas++;
 
-                                    } else if (contadorRespuestas == 3) {
+                                    } else if (contadorRespuestas == 6) {
                                         respuestaincorrecta3 = parser.getText();
                                         System.out.println("Incorrecta3: " + respuestaincorrecta3);
                                         contadorRespuestas++;
@@ -298,13 +283,22 @@ public class ResumenActivity extends AppCompatActivity {
                                         Pregunta nuevaPregunta = new Pregunta(enunciado, categoria, respuestacorrecta, respuestaincorrecta1, respuestaincorrecta2, respuestaincorrecta3, imagen);
                                         Repositorio.insertar(nuevaPregunta, myContext);
                                         System.out.println("Pregunta Añadida correctamente a la base de datos......................................");
+                                        contadorRespuestas = 0;
 
                                     } else {
                                         System.out.println("Error al leer");
                                     }
 
+                                }
+
+                                if (tag.equals("file")) {
+                                    imagen = parser.getText();
+                                    //Mientras se arregla lo de la imagen la guardo como cadena vacia
+                                    //imagen= "";
+                                    System.out.println("Imagen: " + imagen);
 
                                 }
+
 
                                 tag = "";
                                 break;
@@ -312,12 +306,14 @@ public class ResumenActivity extends AppCompatActivity {
                             case XmlPullParser.END_TAG:
                                 if (parser.getName().equals("question")) {
                                     //System.out.println("terminado");
-                                    contadorRespuestas = 0;
+                                    //contadorRespuestas=0;
                                     //System.out.println("cONTADOR EN TERMINADO: "+ contadorRespuestas);
                                 }
                                 break;
                         }
+
                     }
+
 
                     fis.close();
                 } catch (IOException e) {
