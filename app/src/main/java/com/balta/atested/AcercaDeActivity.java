@@ -1,16 +1,17 @@
 package com.balta.atested;
 
-import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 
-public class AcercaActivity extends AppCompatActivity {
+public class AcercaDeActivity extends AppCompatActivity {
 
     private static final String LOGTAG = "AcercaActivity";
     private ImageView iv;
@@ -18,19 +19,52 @@ public class AcercaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_acerca);
+        setContentView(R.layout.activity_acerca_de);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        Button arriba = (Button) findViewById(R.id.buttonArriba);
+        Button abajo = (Button) findViewById(R.id.buttonAbajo);
+        Button izquierda = (Button) findViewById(R.id.buttonIzquierda);
+        Button derecha = (Button) findViewById(R.id.buttonDerecha);
 
-            //Abre la actividad siguiente al clickar
+        arriba.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                Animation anim = AnimationUtils.loadAnimation(AcercaActivity.this, R.anim.exit_left);
+                Animation anim = AnimationUtils.loadAnimation(AcercaDeActivity.this, R.anim.exit_up);
+                iv = findViewById(R.id.imageView);
+                iv.startAnimation(anim);
+            }
+        });
+
+        abajo.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Animation anim = AnimationUtils.loadAnimation(AcercaDeActivity.this, R.anim.exit_bottom);
+                iv = findViewById(R.id.imageView);
+                iv.startAnimation(anim);
+            }
+        });
+
+        izquierda.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Animation anim = AnimationUtils.loadAnimation(AcercaDeActivity.this, R.anim.exit_left);
+                iv = findViewById(R.id.imageView);
+                iv.startAnimation(anim);
+            }
+        });
+
+        derecha.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Animation anim = AnimationUtils.loadAnimation(AcercaDeActivity.this, R.anim.exit_right);
                 iv = findViewById(R.id.imageView);
                 iv.startAnimation(anim);
             }
@@ -81,7 +115,5 @@ public class AcercaActivity extends AppCompatActivity {
         MyLog.d(LOGTAG, Constantes.destroy);
         super.onDestroy();
     }
-
-
 
 }

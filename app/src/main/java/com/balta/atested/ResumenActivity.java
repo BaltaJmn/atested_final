@@ -95,7 +95,7 @@ public class ResumenActivity extends AppCompatActivity {
 
             case R.id.action_acercade:
                 Log.i("ActionBar", "Acerca De");
-                Intent acercadeIntent = new Intent(ResumenActivity.this, AcercaActivity.class);
+                Intent acercadeIntent = new Intent(ResumenActivity.this, AcercaDeActivity.class);
                 startActivity(acercadeIntent);
                 return true;
 

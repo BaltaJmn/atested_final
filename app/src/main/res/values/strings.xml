@@ -42,5 +42,6 @@
     <string name="delete">Borrar</string>
     <string name="action_importar">Importar</string>
     <string name="action_exportar">Exportar</string>
+    <string name="title_activity_acerca_de">AcercaDeActivity</string>
 
 </resources>

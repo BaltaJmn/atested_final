@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.balta.atested">
 
-    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -31,12 +34,13 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="text/*" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".AcercaActivity" />
         <activity
             android:name=".ListadoActivity"
             android:label="@string/title_activity_listado"
@@ -44,6 +48,10 @@
         <activity
             android:name=".AnyadirEditarActivity"
             android:label="@string/title_activity_anyadir"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".AcercaDeActivity"
+            android:label="@string/title_activity_acerca_de"
             android:theme="@style/AppTheme"></activity>
     </application>
 
